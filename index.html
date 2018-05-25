@@ -66,7 +66,8 @@
 
      var exports;
      var romaji_to_hiragana;
-
+     var romaji_to_hiragana_safe;
+     
      request.onload = function() {
        var bytes = request.response;
        WebAssembly.instantiate(bytes).then(results => {
@@ -78,22 +79,42 @@
            return copyCStr(exports, outptr);
          };
 
+         romaji_to_hiragana_safe = s => {
+           let outptr = exports.romaji_to_hiragana_safe(newString(exports, s));
+           return copyCStr(exports, outptr);
+         };
          console.log(romaji_to_hiragana('arigatou'));
 
        });
      };
 
      function convert(event) {
+       console.log(event.value);
        document.getElementById("result").innerHTML = romaji_to_hiragana(event.value);
      }
+
+     function overwrite(event) {
+       // const start = event.selectionStart;
+       // const end = event.selectionEnd;
+       
+       event.value = romaji_to_hiragana_safe(event.value);
+
+       // restore from variables...
+       // event.setSelectionRange(start, end);
+     }     
     </script>
   </head>
   <body>
     <p id="result"></p>
-    <input id="box" type="text" onkeyup="convert(this)"></input>
+    <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
+  </break>
+  <input id="overwrite" type="text"  onkeyup="overwrite(this)"></input>
 
-    <script>
-     
-    </script>
+  <style>
+   #result, #box, #overwrite {
+     font-size: 2em;
+     color: black;
+   }
+  </style>
   </body>
 </html>

@@ -32,3 +32,17 @@ pub fn romaji_to_hiragana(ptr: *mut c_char) -> *mut c_char {
     let c_string = CString::new(s).unwrap();
     c_string.into_raw()
 }
+
+#[no_mangle]
+pub fn romaji_to_hiragana_safe(ptr: *mut c_char) -> *mut c_char {
+    let mut s: String;
+
+    unsafe {
+        s = CString::from_raw(ptr).into_string().unwrap();
+    }
+    
+    s = japonic::standard::lib::romaji_to_hiragana_safe(&s);
+
+    let c_string = CString::new(s).unwrap();
+    c_string.into_raw()
+}
