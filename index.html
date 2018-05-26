@@ -111,507 +111,381 @@
     </script>
   </head>
   <body>
-    <p id="result"></p>
-    <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
-  </break>
-  <input id="overwrite" type="text"  onkeyup="overwrite(this)"></input>
-
-  <table class="wikitable" style="vertical-align:top" cellpadding="2" border="0">
-    <caption>Hiragana</caption>
-    <tbody>
-      <tr>
-	<th></th>
-	<th><i>a</i></th>
-	<th><i>i</i></th>
-	<th><i>u</i></th>
-	<th><i>e</i></th>
-	<th><i>o</i></th>
-      </tr>
-      <tr align="center">
-	<th title="no lead consonant">∅</th>
-	<td><big>あ</big></td>
-	<td><big>い</big></td>
-	<td><big>う</big></td>
-	<td><big>え</big></td>
-	<td><big>お</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>k</i></th>
-	<td><big>か</big></td>
-	<td><big>き</big></td>
-	<td><big>く</big></td>
-	<td><big>け</big></td>
-	<td><big>こ</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>s</i></th>
-	<td><big>さ</big></td>
-	<td><big>し</big></td>
-	<td><big>す</big></td>
-	<td><big>せ</big></td>
-	<td><big>そ</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>t</i></th>
-	<td><big>た</big></td>
-	<td><big>ち</big></td>
-	<td><big>つ</big></td>
-	<td><big>て</big></td>
-	<td><big>と</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>n</i></th>
-	<td><big>な</big></td>
-	<td><big>に</big></td>
-	<td><big>ぬ</big></td>
-	<td><big>ね</big></td>
-	<td><big>の</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>h</i></th>
-	<td><big>は</a></big></td>
-	<td><big>ひ</a></big></td>
-	<td><big>ふ</a></big></td>
-	<td><big>へ</a></big></td>
-	<td><big>ほ</a></big></td>
-      </tr>
-      <tr align="center">
-	<th><i>m</i></th>
-	<td><big>ま</big></td>
-	<td><big>み</big></td>
-	<td><big>む</big></td>
-	<td><big>め</big></td>
-	<td><big>も</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>y</i></th>
-	<td><big>や</big></td>
-	<td bgcolor="#DDDDF6"></td>
-	<td><big>ゆ</big></td>
-	<td bgcolor="#DDDDF6"></td>
-	<td><big>よ</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>r</i></th>
-	<td><big>ら</big></td>
-	<td><big>り</big></td>
-	<td><big>る</big></td>
-	<td><big>れ</big></td>
-	<td><big>ろ</big></td>
-      </tr>
-      <tr align="center">
-	<th><i>w</i></th>
-	<td><big>わ</big></td>
-	<td bgcolor="#DDDDF6"><big>ゐ</big></td>
-	<td bgcolor="#DDDDF6"></td>
-	<td bgcolor="#DDDDF6"><big>ゑ</big></td>
-	<td><big>を</big></td>
-      </tr>
-      <tr align="center">
-	<td colspan="6"><big>ん</big> <b>(<i>n</i>)</b></td>
-      </tr>
-      <tr>
-	<th colspan="6">Functional marks<br>
-	  and diacritics</th>
-      </tr>
-      <tr>
-	<td><big>っ</big></td>
-	<td><big>ゝ</big></td>
-	<td colspan="2"><big>゛</big></td>
-	<td colspan="2"><big>゜</big></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="measure-row">
-    <div class="measure-column">
-      <div><span style="opacity: 0.0;">あ</span></div>
-      <div>あ行</div>
-      <div>か行</div>
-      <div>さ行</div>
-      <div>た行</div>
-      <div>な行</div>
+    <!-- <p id="result"></p>
+	 <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
+    -->
+    <div class="center">
+      <input id="overwrite" type="text"  onkeyup="overwrite(this)"></input>
     </div>
 
-    <div class="measure-column" align="center">
-      <div>あ段</div>
-      <div bgcolor="#EFFAFA"><big>あ</big><br><code>a</code></div>
-      <div bgcolor="#EFFAFA"><big>か</big><br><code>ka</code></div>
-      <div bgcolor="#EFFAFA"><big>さ</big><br><code>sa</code></div>
-      <div bgcolor="#EFFAFA"><big>た</big><br><code>ta</code></div>
-    </div>
+    <table class="wikitable nowraplinks" style="vertical-align:top;padding:2px;margin-top:6em;" width="100%" cellpadding="2" border="0">
+      <tbody>
+	<caption>ローマ字入力</caption>
+	<tr>
+	  <th width="2%"></th>
+	  <th width="10%">あ段</th>
+	  <th width="10%">い段</th>
+	  <th width="10%">う段</th>
+	  <th width="10%">え段</th>
+	  <th width="10%">お段</th>
+	  <th width="11%">や段</th>
+	  <th width="11%">ゆ段</th>
+	  <th width="11%">よ段</th>
+	</tr>
+	<tr valign="top" align="center">
+	  <th title="vowels">あ行</th>
+	  <td bgcolor="#EFFAFA"><big>あ</big><br><code>a</code></td>
+	  <td bgcolor="#EFFAFA"><big>い</big><br><code>i</code></td>
+	  <td bgcolor="#EFFAFA"><big>う</big><br><code>u</code></td>
+	  <td bgcolor="#EFFAFA"><big>え</big><br><code>e</code></td>
+	  <td bgcolor="#EFFAFA"><big>お</big><br><code>o</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>か行</th>
+	  <td bgcolor="#EFFAFA"><big>か</big><br><code>ka</code></td>
+	  <td bgcolor="#EFFAFA"><big>き</big><br><code>ki</code></td>
+	  <td bgcolor="#EFFAFA"><big>く</big><br><code>ku</code></td>
+	  <td bgcolor="#EFFAFA"><big>け</big><br><code>ke</code></td>
+	  <td bgcolor="#EFFAFA"><big>こ</big><br><code>ko</code></td>
+	  <td bgcolor="#F3F5DE"><big>きゃ</big><br><code>kya</code>, <code>kixya</code></td>
+	  <td bgcolor="#F3F5DE"><big>きゅ</big><br><code>kyu</code>, <code>kixyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>きょ</big><br><code>kyo</code>, <code>kixyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>さ行</th>
+	  <td bgcolor="#EFFAFA"><big>さ</big><br><code>sa</code></td>
+	  <td bgcolor="#EFFAFA"><big>し</big><br><code>si</code>, <code>shi</code></td>
+	  <td bgcolor="#EFFAFA"><big>す</big><br><code>su</code></td>
+	  <td bgcolor="#EFFAFA"><big>せ</big><br><code>se</code></td>
+	  <td bgcolor="#EFFAFA"><big>そ</big><br><code>so</code></td>
+	  <td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code>, <code>shixya</code>, <code>sya</code></td>
+	  <td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code>, <code>shixyu</code>, <code>syu</code></td>
+	  <td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code>, <code>shixyo</code>, <code>syo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>た行</th>
+	  <td bgcolor="#EFFAFA"><big>た</big><br><code>ta</code></td>
+	  <td bgcolor="#EFFAFA"><big>ち</big><br><code>chi</code>, <code>ti</code></td>
+	  <td bgcolor="#EFFAFA"><big>つ</big><br><code>tsu</code>, <code>tu</code></td>
+	  <td bgcolor="#EFFAFA"><big>て</big><br><code>te</code></td>
+	  <td bgcolor="#EFFAFA"><big>と</big><br><code>to</code></td>
+	  <td bgcolor="#F3F5DE"><big>ちゃ</big><br><code>cha</code>, <code>tixya</code>, <code>tya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ちゅ</big><br><code>chu</code>, <code>tixyu</code>, <code>tyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ちょ</big><br><code>cho</code>, <code>tixyu</code>, <code>tyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>な行</th>
+	  <td bgcolor="#EFFAFA"><big>な</big><br><code>na</code></td>
+	  <td bgcolor="#EFFAFA"><big>に</big><br><code>ni</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぬ</big><br><code>nu</code></td>
+	  <td bgcolor="#EFFAFA"><big>ね</big><br><code>ne</code></td>
+	  <td bgcolor="#EFFAFA"><big>の</big><br><code>no</code></td>
+	  <td bgcolor="#F3F5DE"><big>にゃ</big><br><code>nya</code>, <code>nixya</code></td>
+	  <td bgcolor="#F3F5DE"><big>にゅ</big><br><code>nyu</code>, <code>nixyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>にょ</big><br><code>nyo</code>, <code>nixyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>は行</th>
+	  <td bgcolor="#EFFAFA"><big>は</big><br><code>ha</code></td>
+	  <td bgcolor="#EFFAFA"><big>ひ</big><br><code>hi</code></td>
+	  <td bgcolor="#EFFAFA"><big>ふ</big><br><code>hu</code></td>
+	  <td bgcolor="#EFFAFA"><big>へ</big><br><code>he</code></td>
+	  <td bgcolor="#EFFAFA"><big>ほ</big><br><code>ho</code></td>
+	  <td bgcolor="#F3F5DE"><big>ひゃ</big><br><code>hya</code>, <code>hixya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ひゅ</big><br><code>hyu</code>, <code>hixyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ひょ</big><br><code>hyo</code>, <code>hixyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>ま行</th>
+	  <td bgcolor="#EFFAFA"><big>ま</big><br><code>ma</code></td>
+	  <td bgcolor="#EFFAFA"><big>み</big><br><code>mi</code></td>
+	  <td bgcolor="#EFFAFA"><big>む</big><br><code>mu</code></td>
+	  <td bgcolor="#EFFAFA"><big>め</big><br><code>me</code></td>
+	  <td bgcolor="#EFFAFA"><big>も</big><br><code>mo</code></td>
+	  <td bgcolor="#F3F5DE"><big>みゃ</big><br><code>mya</code>, <code>mixya</code></td>
+	  <td bgcolor="#F3F5DE"><big>みゅ</big><br><code>myu</code>, <code>mixyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>みょ</big><br><code>myo</code>, <code>mixyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>や行</th>
+	  <td bgcolor="#EFFAFA"><big>や</big><br><code>ya</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>ゆ</big><br><code>yu</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>よ</big><br><code>yo</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>ら行</th>
+	  <td bgcolor="#EFFAFA"><big>ら</big><br><code>ra</code></td>
+	  <td bgcolor="#EFFAFA"><big>り</big><br><code>ri</code></td>
+	  <td bgcolor="#EFFAFA"><big>る</big><br><code>ru</code></td>
+	  <td bgcolor="#EFFAFA"><big>れ</big><br><code>re</code></td>
+	  <td bgcolor="#EFFAFA"><big>ろ</big><br><code>ro</code></td>
+	  <td bgcolor="#F3F5DE"><big>りゃ</big><br><code>rya</code>, <code>rixya</code></td>
+	  <td bgcolor="#F3F5DE"><big>りゅ</big><br><code>ryu</code>, <code>rixyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>りょ</big><br><code>ryo</code>, <code>rixyo</code></td>
+	</tr>
+	<tr valign="top" align="center">
+	  <th>わ行</th>
+	  <td bgcolor="#EFFAFA"><big>わ</big><br><code>wa</code></td>
+	  <td bgcolor="#EFFAFA"><big style="color:#808080">ゐ</big><br><code>wyi</code>, <code>wi</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big style="color:#808080">ゑ</big><br><code>wye</code>, <code>we</code></td>
+	  <td bgcolor="#EFFAFA"><big>を</big><br><code>wo</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-    <div class="measure-column">
-      <div>い段</div>
-      <div>い</div>
-      <div>き</div>
-      <div>し</div>
-      <div>ち</div>
-      <div>に</div>
-    </div>
+	<tr>
+	  <td colspan="9"></td>
+	</tr>
 
-    <div class="measure-column">
-      <div>う段</div>
-      <div>う</div>
-      <div>く</div>
-      <div>す</div>
-      <div>つ</div>
-      <div>ぬ</div>
-    </div>
+	<tr valign="top" align="center">
+	  <th>特別</th>
+	  <td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n'</code>, <code>n</code> と <code>スペースキー</code>, <code>n</code> と <code>いずれかの子音</code></td>
+	  <td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>, <code>ltu</code>, <code>xtsu</code>, <code>xtu</code>, 子音字を重ねる</td>
+	</tr>
 
-    <div class="measure-column">
-      <div>え段</div>
-      <div>え</div>
-      <div>け</div>
-      <div>せ</div>
-      <div>て</div>
-      <div>ね</div>
-    </div>
+	<tr>
+	  <td colspan="9"></td>
+	</tr>
 
-    <div class="measure-column">
-      <div>お段</div>
-      <div>お</div>
-      <div>こ</div>
-      <div>そ</div>
-      <div>と</div>
-      <div>の</div>
-    </div>
+	<tr>
+	  <th width="2%"></th>
+	  <th width="10%">あ段</th>
+	  <th width="10%">い段</th>
+	  <th width="10%">う段</th>
+	  <th width="10%">え段</th>
+	  <th width="10%">お段</th>
+	  <th width="11%">や段</th>
+	  <th width="11%">ゆ段</th>
+	  <th width="11%">よ段</th>
+	</tr>
 
-    <div class="measure-column">
-      <div style="height:inherit;">や段</div>
-      <div><span style="opacity: 0.0;">あ</span></div>
-      <div>きゃ</div>
-      <div>しゃ</div>
-      <div>ちゃ</div>
-      <div>にゃ</div>
-    </div>
+	<tr valign="top" align="center">
+	  <th>が行</th>
+	  <td bgcolor="#EFFAFA"><big>が</big><br><code>ga</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぎ</big><br><code>gi</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぐ</big><br><code>gu</code></td>
+	  <td bgcolor="#EFFAFA"><big>げ</big><br><code>ge</code></td>
+	  <td bgcolor="#EFFAFA"><big>ご</big><br><code>go</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぎゃ</big><br><code>gya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぎゅ</big><br><code>gyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぎょ</big><br><code>gyo</code></td>
+	</tr>
 
-    <div class="measure-column">
-      <div>ゆ段</div>
-      <div><span style="opacity: 0.0;">あ</span></div>
-      <div>きゅ</div>
-      <div>しゅ</div>
-      <div>ちゅ</div>
-      <div>にゅ</div>
-    </div>
+	<tr valign="top" align="center">
+	  <th>ざ行</th>
+	  <td bgcolor="#EFFAFA"><big>ざ</big><br><code>za</code></td>
+	  <td bgcolor="#EFFAFA"><big>じ</big><br><code>ji</code></td>
+	  <td bgcolor="#EFFAFA"><big>ず</big><br><code>zu</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぜ</big><br><code>ze</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぞ</big><br><code>zo</code></td>
+	  <td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code>, <code>jya</code>, <code>zya</code></td>
+	  <td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code>, <code>jyu</code>, <code>zyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code>, <code>jyo</code>, <code>zyo</code></td>
+	</tr>
 
-    <div class="measure-column">
-      <div>よ段</div>
-      <div><span style="opacity: 0.0;">あ</span></div>
-      <div>きょ</div>
-      <div>しょ</div>
-      <div>ちょ</div>
-      <div>にょ</div>
-    </div>
-  </div>
+	<tr valign="top" align="center">
+	  <th>だ行</th>
+	  <td bgcolor="#EFFAFA"><big>だ</big><br><code>da</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぢ</big><br><code>di</code></td>
+	  <td bgcolor="#EFFAFA"><big>づ</big><br><code>du</code></td>
+	  <td bgcolor="#EFFAFA"><big>で</big><br><code>de</code></td>
+	  <td bgcolor="#EFFAFA"><big>ど</big><br><code>do</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぢゃ</big><br><code>dya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぢゅ</big><br><code>dyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぢょ</big><br><code>dyo</code></td>
+	</tr>
 
-  <table class="wikitable nowraplinks" style="vertical-align:top;padding:2px;" width="100%" cellpadding="2" border="0">
-    <tbody>
-      <caption>ローマ字入力</caption>
-      <tr>
-	<th width="2%"></th>
-	<th width="10%">あ段</th>
-	<th width="10%">い段</th>
-	<th width="10%">う段</th>
-	<th width="10%">え段</th>
-	<th width="10%">お段</th>
-	<th width="11%">や段</th>
-	<th width="11%">ゆ段</th>
-	<th width="11%">よ段</th>
-      </tr>
-      <tr valign="top" align="center">
-	<th title="vowels">あ行</th>
-	<td bgcolor="#EFFAFA"><big>あ</big><br><code>a</code></td>
-	<td bgcolor="#EFFAFA"><big>い</big><br><code>i</code></td>
-	<td bgcolor="#EFFAFA"><big>う</big><br><code>u</code></td>
-	<td bgcolor="#EFFAFA"><big>え</big><br><code>e</code></td>
-	<td bgcolor="#EFFAFA"><big>お</big><br><code>o</code></td>
-	<td colspan="3" bgcolor="#E9E9E9"></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>か行</th>
-	<td bgcolor="#EFFAFA"><big>か</big><br><code>ka</code></td>
-	<td bgcolor="#EFFAFA"><big>き</big><br><code>ki</code></td>
-	<td bgcolor="#EFFAFA"><big>く</big><br><code>ku</code></td>
-	<td bgcolor="#EFFAFA"><big>け</big><br><code>ke</code></td>
-	<td bgcolor="#EFFAFA"><big>こ</big><br><code>ko</code></td>
-	<td bgcolor="#F3F5DE"><big>きゃ</big><br><code>kya</code>, <code>kixya</code></td>
-	<td bgcolor="#F3F5DE"><big>きゅ</big><br><code>kyu</code>, <code>kixyu</code></td>
-	<td bgcolor="#F3F5DE"><big>きょ</big><br><code>kyo</code>, <code>kixyo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>さ行</th>
-	<td bgcolor="#EFFAFA"><big>さ</big><br><code>sa</code></td>
-	<td bgcolor="#EFFAFA"><big>し</big><br><code>si</code>, <code>shi</code></td>
-	<td bgcolor="#EFFAFA"><big>す</big><br><code>su</code></td>
-	<td bgcolor="#EFFAFA"><big>せ</big><br><code>se</code></td>
-	<td bgcolor="#EFFAFA"><big>そ</big><br><code>so</code></td>
-	<td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code>, <code>sya</code></td>
-	<td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code>, <code>syu</code></td>
-	<td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code>, <code>syo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>た行</th>
-	<td bgcolor="#EFFAFA"><big>た</big><br><code>ta</code></td>
-	<td bgcolor="#EFFAFA"><big>ち</big><br><code>chi</code>, <code>ti</code></td>
-	<td bgcolor="#EFFAFA"><big>つ</big><br><code>tsu</code>, <code>tu</code></td>
-	<td bgcolor="#EFFAFA"><big>て</big><br><code>te</code></td>
-	<td bgcolor="#EFFAFA"><big>と</big><br><code>to</code></td>
-	<td bgcolor="#F3F5DE"><big>ちゃ</big><br><code>cha</code>, <code>tya</code></td>
-	<td bgcolor="#F3F5DE"><big>ちゅ</big><br><code>chu</code>, <code>tyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ちょ</big><br><code>cho</code>, <code>tyo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>な行</th>
-	<td bgcolor="#EFFAFA"><big>な</big><br><code>na</code></td>
-	<td bgcolor="#EFFAFA"><big>に</big><br><code>ni</code></td>
-	<td bgcolor="#EFFAFA"><big>ぬ</big><br><code>nu</code></td>
-	<td bgcolor="#EFFAFA"><big>ね</big><br><code>ne</code></td>
-	<td bgcolor="#EFFAFA"><big>の</big><br><code>no</code></td>
-	<td bgcolor="#F3F5DE"><big>にゃ</big><br><code>nya</code></td>
-	<td bgcolor="#F3F5DE"><big>にゅ</big><br><code>nyu</code></td>
-	<td bgcolor="#F3F5DE"><big>にょ</big><br><code>nyo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>は行</th>
-	<td bgcolor="#EFFAFA"><big>は</big><br><code>ha</code></td>
-	<td bgcolor="#EFFAFA"><big>ひ</big><br><code>hi</code></td>
-	<td bgcolor="#EFFAFA"><big>ふ</big><br><code>hu</code></td>
-	<td bgcolor="#EFFAFA"><big>へ</big><br><code>he</code></td>
-	<td bgcolor="#EFFAFA"><big>ほ</big><br><code>ho</code></td>
-	<td bgcolor="#F3F5DE"><big>ひゃ</big><br><code>hya</code></td>
-	<td bgcolor="#F3F5DE"><big>ひゅ</big><br><code>hyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ひょ</big><br><code>hyo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>ま行</th>
-	<td bgcolor="#EFFAFA"><big>ま</big><br><code>ma</code></td>
-	<td bgcolor="#EFFAFA"><big>み</big><br><code>mi</code></td>
-	<td bgcolor="#EFFAFA"><big>む</big><br><code>mu</code></td>
-	<td bgcolor="#EFFAFA"><big>め</big><br><code>me</code></td>
-	<td bgcolor="#EFFAFA"><big>も</big><br><code>mo</code></td>
-	<td bgcolor="#F3F5DE"><big>みゃ</big><br><code>mya</code></td>
-	<td bgcolor="#F3F5DE"><big>みゅ</big><br><code>myu</code></td>
-	<td bgcolor="#F3F5DE"><big>みょ</big><br><code>myo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>や行</th>
-	<td bgcolor="#EFFAFA"><big>や</big><br><code>ya</code></td>
-	<td bgcolor="#E9E9E9"></td>
-	<td bgcolor="#EFFAFA"><big>ゆ</big><br><code>yu</code></td>
-	<td bgcolor="#E9E9E9"></td>
-	<td bgcolor="#EFFAFA"><big>よ</big><br><code>yo</code></td>
-	<td colspan="3" bgcolor="#E9E9E9"></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>ら行</th>
-	<td bgcolor="#EFFAFA"><big>ら</big><br><code>ra</code></td>
-	<td bgcolor="#EFFAFA"><big>り</big><br><code>ri</code></td>
-	<td bgcolor="#EFFAFA"><big>る</big><br><code>ru</code></td>
-	<td bgcolor="#EFFAFA"><big>れ</big><br><code>re</code></td>
-	<td bgcolor="#EFFAFA"><big>ろ</big><br><code>ro</code></td>
-	<td bgcolor="#F3F5DE"><big>りゃ</big><br><code>rya</code></td>
-	<td bgcolor="#F3F5DE"><big>りゅ</big><br><code>ryu</code></td>
-	<td bgcolor="#F3F5DE"><big>りょ</big><br><code>ryo</code></td>
-      </tr>
-      <tr valign="top" align="center">
-	<th>わ行</th>
-	<td bgcolor="#EFFAFA"><big>わ</big><br><code>wa</code></td>
-	<td bgcolor="#EFFAFA"><big style="color:#808080">ゐ</big><br><code>wyi</code>, <code>wi</code></td>
-	<td bgcolor="#E9E9E9"></td>
-	<td bgcolor="#EFFAFA"><big style="color:#808080">ゑ</big><br><code>wye</code>, <code>we</code></td>
-	<td bgcolor="#EFFAFA"><big>を</big><br><code>wo</code></td>
-	<td colspan="3" bgcolor="#E9E9E9"></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <th>ば行</th>
+	  <td bgcolor="#EFFAFA"><big>ば</big><br><code>ba</code></td>
+	  <td bgcolor="#EFFAFA"><big>び</big><br><code>bi</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぶ</big><br><code>bu</code></td>
+	  <td bgcolor="#EFFAFA"><big>べ</big><br><code>be</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぼ</big><br><code>bo</code></td>
+	  <td bgcolor="#F3F5DE"><big>びゃ</big><br><code>bya</code></td>
+	  <td bgcolor="#F3F5DE"><big>びゅ</big><br><code>byu</code></td>
+	  <td bgcolor="#F3F5DE"><big>びょ</big><br><code>byo</code></td>
+	</tr>
 
-      <tr>
-	<td colspan="9"></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <th>ぱ行</th>
+	  <td bgcolor="#EFFAFA"><big>ぱ</big><br><code>pa</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぴ</big><br><code>pi</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぷ</big><br><code>pu</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぺ</big><br><code>pe</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぽ</big><br><code>po</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぴゃ</big><br><code>pya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぴゅ</big><br><code>pyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぴょ</big><br><code>pyo</code></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<th>特別</th>
-	<td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n'</code>, <code>n</code> と <code>スペースキー</code>, <code>n</code> と <code>いずれかの子音</code></td>
-	<td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>, <code>ltu</code>, <code>xtsu</code>, <code>xtu</code>, 子音字を重ねる</td>
-      </tr>
+	<tr valign="top" align="center">
+	  <td colspan="9">特別</td>
+	</tr>
 
-      <tr>
-	<td colspan="9"></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <th rowspan="3" width="2%">捨て仮名</th>	
+	  <td bgcolor="#EFFAFA"><big>ぁ</big><br><code>la</code>, <code>xa</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぃ</big><br><code>li</code>, <code>xi</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぅ</big><br><code>lu</code>, <code>xu</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぇ</big><br><code>le</code>, <code>xe</code></td>
+	  <td bgcolor="#EFFAFA"><big>ぉ</big><br><code>lo</code>, <code>xo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ゃ</big><br><code>lya</code>, <code>xya</code></td>
+	  <td bgcolor="#F3F5DE"><big>ゅ</big><br><code>lyu</code>, <code>xyu</code></td>
+	  <td bgcolor="#F3F5DE"><big>ょ</big><br><code>lyo</code>, <code>xyo</code></td>
+	</tr>
 
-      <tr>
-	<th width="2%"></th>
-	<th width="10%">あ段</th>
-	<th width="10%">い段</th>
-	<th width="10%">う段</th>
-	<th width="10%">え段</th>
-	<th width="10%">お段</th>
-	<th width="11%">や段</th>
-	<th width="11%">ゆ段</th>
-	<th width="11%">よ段</th>
-      </tr>
+	<tr valign="top" align="center">
+	  <td bgcolor="#EFFAFA"><big>ヵ</big><br><code>lka</code>, <code>xka</code></td>
+	  <td colspan="2" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>ヶ</big><br><code>lke</code>, <code>xke</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<th>が行</th>
-	<td bgcolor="#EFFAFA"><big>が</big><br><code>ga</code></td>
-	<td bgcolor="#EFFAFA"><big>ぎ</big><br><code>gi</code></td>
-	<td bgcolor="#EFFAFA"><big>ぐ</big><br><code>gu</code></td>
-	<td bgcolor="#EFFAFA"><big>げ</big><br><code>ge</code></td>
-	<td bgcolor="#EFFAFA"><big>ご</big><br><code>go</code></td>
-	<td bgcolor="#F3F5DE"><big>ぎゃ</big><br><code>gya</code></td>
-	<td bgcolor="#F3F5DE"><big>ぎゅ</big><br><code>gyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ぎょ</big><br><code>gyo</code></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <td bgcolor="#EFFAFA"><big>ゎ</big><br><code>lwa</code>, <code>xwa</code></td>
+	  <td colspan="4" bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<th>ざ行</th>
-	<td bgcolor="#EFFAFA"><big>ざ</big><br><code>za</code></td>
-	<td bgcolor="#EFFAFA"><big>じ</big><br><code>ji</code></td>
-	<td bgcolor="#EFFAFA"><big>ず</big><br><code>zu</code></td>
-	<td bgcolor="#EFFAFA"><big>ぜ</big><br><code>ze</code></td>
-	<td bgcolor="#EFFAFA"><big>ぞ</big><br><code>zo</code></td>
-	<td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code>, <code>jya</code>, <code>zya</code></td>
-	<td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code>, <code>jyu</code>, <code>zyu</code></td>
-	<td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code>, <code>jyo</code>, <code>zyo</code></td>
-      </tr>
 
-      <tr valign="top" align="center">
-	<th>だ行</th>
-	<td bgcolor="#EFFAFA"><big>だ</big><br><code>da</code></td>
-	<td bgcolor="#EFFAFA"><big>ぢ</big><br><code>di</code></td>
-	<td bgcolor="#EFFAFA"><big>づ</big><br><code>du</code></td>
-	<td bgcolor="#EFFAFA"><big>で</big><br><code>de</code></td>
-	<td bgcolor="#EFFAFA"><big>ど</big><br><code>do</code></td>
-	<td bgcolor="#F3F5DE"><big>ぢゃ</big><br><code>dya</code></td>
-	<td bgcolor="#F3F5DE"><big>ぢゅ</big><br><code>dyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ぢょ</big><br><code>dyo</code></td>
-      </tr>
 
-      <tr valign="top" align="center">
-	<th>ば行</th>
-	<td bgcolor="#EFFAFA"><big>ば</big><br><code>ba</code></td>
-	<td bgcolor="#EFFAFA"><big>び</big><br><code>bi</code></td>
-	<td bgcolor="#EFFAFA"><big>ぶ</big><br><code>bu</code></td>
-	<td bgcolor="#EFFAFA"><big>べ</big><br><code>be</code></td>
-	<td bgcolor="#EFFAFA"><big>ぼ</big><br><code>bo</code></td>
-	<td bgcolor="#F3F5DE"><big>びゃ</big><br><code>bya</code></td>
-	<td bgcolor="#F3F5DE"><big>びゅ</big><br><code>byu</code></td>
-	<td bgcolor="#F3F5DE"><big>びょ</big><br><code>byo</code></td>
-      </tr>
+	
 
-      <tr valign="top" align="center">
-	<th>ぱ行</th>
-	<td bgcolor="#EFFAFA"><big>ぱ</big><br><code>pa</code></td>
-	<td bgcolor="#EFFAFA"><big>ぴ</big><br><code>pi</code></td>
-	<td bgcolor="#EFFAFA"><big>ぷ</big><br><code>pu</code></td>
-	<td bgcolor="#EFFAFA"><big>ぺ</big><br><code>pe</code></td>
-	<td bgcolor="#EFFAFA"><big>ぽ</big><br><code>po</code></td>
-	<td bgcolor="#F3F5DE"><big>ぴゃ</big><br><code>pya</code></td>
-	<td bgcolor="#F3F5DE"><big>ぴゅ</big><br><code>pyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ぴょ</big><br><code>pyo</code></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <th rowspan="8" width="2%">特別</th>	
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>しぇ</big><br><code>she</code>, <code>shixe</code>, <code>sye</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<th rowspan="3" width="2%">捨て仮名</th>	
-	<td bgcolor="#EFFAFA"><big>ぁ</big><br><code>la</code>, <code>xa</code></td>
-	<td bgcolor="#EFFAFA"><big>ぃ</big><br><code>li</code>, <code>xi</code></td>
-	<td bgcolor="#EFFAFA"><big>ぅ</big><br><code>lu</code>, <code>xu</code></td>
-	<td bgcolor="#EFFAFA"><big>ぇ</big><br><code>le</code>, <code>xe</code></td>
-	<td bgcolor="#EFFAFA"><big>ぉ</big><br><code>lo</code>, <code>xo</code></td>
-	<td bgcolor="#F3F5DE"><big>ゃ</big><br><code>lya</code>, <code>xya</code></td>
-	<td bgcolor="#F3F5DE"><big>ゅ</big><br><code>lyu</code>, <code>xyu</code></td>
-	<td bgcolor="#F3F5DE"><big>ょ</big><br><code>lyo</code>, <code>xyo</code></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>ちぇ</big><br><code>che</code>, <code>chixe</code>, <code>cye</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<td bgcolor="#EFFAFA"><big>ヵ</big><br><code>lka</code>, <code>xka</code></td>
-	<td colspan="2" bgcolor="#E9E9E9"></td>
-	<td bgcolor="#EFFAFA"><big>ヶ</big><br><code>lke</code>, <code>xke</code></td>
-	<td bgcolor="#E9E9E9"></td>
-	<td colspan="3" bgcolor="#E9E9E9"></td>
-      </tr>
+	<tr valign="top" align="center">
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>じぇ</big><br><code>je</code>, <code>jixe</code>, <code>zye</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-      <tr valign="top" align="center">
-	<td bgcolor="#EFFAFA"><big>ゎ</big><br><code>lwa</code>, <code>xwa</code></td>
-	<td colspan="4" bgcolor="#E9E9E9"></td>
-	<td colspan="3" bgcolor="#E9E9E9"></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <style>
-   #result,  #box, #overwrite {
-     font-size: 2em;
-     color: black;
-   }
+	<tr valign="top" align="center">
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>ぢぇ</big><br><code>dixe</code>, <code>dye</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-   table.wikitable {
-     background-color: #f8f9fa;
-     color: #222;
-     margin: 1em 0;
-     border: 1px solid #a2a9b1;
-     border-collapse: collapse;
-   }
+	<tr valign="top" align="center">
+	  <td bgcolor="#EFFAFA"><big>つぁ</big><br><code>tsa</code>, <code>tsuxa</code>, <code>tuxa</code></td>
+	  <td colspan="2" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>つぇ</big><br><code>tse</code>, <code>tsuxe</code>, <code>tuxe</code></td>
+	  <td bgcolor="#EFFAFA"><big>つぉ</big><br><code>tso</code>, <code>tsuxo</code>, <code>tuxo</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
 
-   @media(max-width: 767px) {
-     table {
-       font-size: 1.5em;
+	<tr valign="top" align="center">
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>てぃ</big><br><code>texi</code>, <code>thi</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
+
+	<tr valign="top" align="center">
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>でぃ</big><br><code>dexi</code>, <code>dhi</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
+
+	<tr valign="top" align="center">
+	  <td bgcolor="#EFFAFA"><big>ふぁ</big><br><code>fa</code>, <code>fuxa</code></td>
+	  <td bgcolor="#EFFAFA"><big>ふぃ</big><br><code>fi</code>, <code>fuxi</code></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>ふぇ</big><br><code>fe</code>, <code>fuxe</code></td>
+	  <td bgcolor="#EFFAFA"><big>ふぉ</big><br><code>fo</code>, <code>fuxo</code></td>
+	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	</tr>
+	
+      </tbody>
+    </table>
+    
+    <style>
+     #result,  #box, #overwrite {
+       font-size: 2em;
+       color: black;
      }
-   }
 
-   @media(min-width: 768px) {
-     table {
-       font-size: 1em;
+     table.wikitable {
+       background-color: #f8f9fa;
+       color: #222;
+       margin: 1em 0;
+       border: 1px solid #a2a9b1;
+       border-collapse: collapse;
      }
-   }
 
-   table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th,table.wikitable > * > tr > td {
-     border: 1px solid #a2a9b1;
-     padding: 0.2em 0.4em;
-   }
+     @media(max-width: 767px) {
+       table {
+	 font-size: 1.5em;
+       }
+     }
 
-   table.wikitable > tr > td, table.wikitable > * > tr > td {
-     word-wrap: break-word;
-   }
-   
-   .measure-row > .measure-column > div {
-     border: 0.5px solid #a2a9b1;
-     padding: 0.2em 0.4em;
-   }
+     @media(min-width: 768px) {
+       table {
+	 font-size: 1em;
+       }
+     }
 
-   
-   code {
-     color: #000;
-     background-color: #f8f9fa;
-     border: 1px solid #eaecf0;
-     border-radius: 2px;
-     padding: 1px 4px;
-     font-family: monospace,monospace;
-     font-size: 0.875em;
-   }
+     table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th,table.wikitable > * > tr > td {
+       border: 1px solid #a2a9b1;
+       padding: 0.2em 0.4em;
+     }
 
+     table.wikitable > tr > td, table.wikitable > * > tr > td {
+       word-wrap: break-word;
+     }
+     
+     code {
+       color: #000;
+       background-color: #f8f9fa;
+       border: 1px solid #eaecf0;
+       border-radius: 2px;
+       padding: 1px 4px;
+       font-family: monospace,monospace;
+       font-size: 0.875em;
+     }
 
-   .box {
-     background: grey;
-     padding: 20px 20px 20px 20px;
-   }
+     #overwrite {
+       margin-top: .25em;
+     }
 
-   .wrapper {
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-     grid-column-gap: 6px;
-     grid-row-gap:6px;
-   }
+     .center {
+       text-align: center;
+       position:fixed;
+       top:0;
+       background-color: white;
+       height: 3.3em;
+       width:100%;
+       z-index:100;
+     }
 
-   .measure-row {
-     display: flex;
-     flex-wrap: wrap;
-   }
-
-   .measure-column {
-     display: flex;
-     flex-direction: column;
-   }
-   
-  </style>
+     .fixedElement {
+       background-color: #c0c0c0;
+       position:fixed;
+       top:0;
+       width:100%;
+       z-index:100;
+     }
+    </style>
   </body>
 </html>
