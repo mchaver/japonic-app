@@ -223,6 +223,88 @@
     </tbody>
   </table>
 
+  <div class="measure-row">
+    <div class="measure-column">
+      <div><span style="opacity: 0.0;">あ</span></div>
+      <div>あ行</div>
+      <div>か行</div>
+      <div>さ行</div>
+      <div>た行</div>
+      <div>な行</div>
+    </div>
+
+    <div class="measure-column" align="center">
+      <div>あ段</div>
+      <div bgcolor="#EFFAFA"><big>あ</big><br><code>a</code></div>
+      <div bgcolor="#EFFAFA"><big>か</big><br><code>ka</code></div>
+      <div bgcolor="#EFFAFA"><big>さ</big><br><code>sa</code></div>
+      <div bgcolor="#EFFAFA"><big>た</big><br><code>ta</code></div>
+    </div>
+
+    <div class="measure-column">
+      <div>い段</div>
+      <div>い</div>
+      <div>き</div>
+      <div>し</div>
+      <div>ち</div>
+      <div>に</div>
+    </div>
+
+    <div class="measure-column">
+      <div>う段</div>
+      <div>う</div>
+      <div>く</div>
+      <div>す</div>
+      <div>つ</div>
+      <div>ぬ</div>
+    </div>
+
+    <div class="measure-column">
+      <div>え段</div>
+      <div>え</div>
+      <div>け</div>
+      <div>せ</div>
+      <div>て</div>
+      <div>ね</div>
+    </div>
+
+    <div class="measure-column">
+      <div>お段</div>
+      <div>お</div>
+      <div>こ</div>
+      <div>そ</div>
+      <div>と</div>
+      <div>の</div>
+    </div>
+
+    <div class="measure-column">
+      <div style="height:inherit;">や段</div>
+      <div><span style="opacity: 0.0;">あ</span></div>
+      <div>きゃ</div>
+      <div>しゃ</div>
+      <div>ちゃ</div>
+      <div>にゃ</div>
+    </div>
+
+    <div class="measure-column">
+      <div>ゆ段</div>
+      <div><span style="opacity: 0.0;">あ</span></div>
+      <div>きゅ</div>
+      <div>しゅ</div>
+      <div>ちゅ</div>
+      <div>にゅ</div>
+    </div>
+
+    <div class="measure-column">
+      <div>よ段</div>
+      <div><span style="opacity: 0.0;">あ</span></div>
+      <div>きょ</div>
+      <div>しょ</div>
+      <div>ちょ</div>
+      <div>にょ</div>
+    </div>
+  </div>
+
   <table class="wikitable nowraplinks" style="vertical-align:top;padding:2px;" width="100%" cellpadding="2" border="0">
     <tbody>
       <caption>ローマ字入力</caption>
@@ -348,7 +430,7 @@
 
       <tr valign="top" align="center">
 	<th>特別</th>
-	<td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n'</code> <code>n</code>と<code>いずれかの子音</code></td>
+	<td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n'</code>, <code>n</code> と <code>スペースキー</code>, <code>n</code> と <code>いずれかの子音</code></td>
 	<td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>, <code>ltu</code>, <code>xtsu</code>, <code>xtu</code>, 子音字を重ねる</td>
       </tr>
 
@@ -470,8 +552,16 @@
      border-collapse: collapse;
    }
 
-   table {
-     font-size: 100%;
+   @media(max-width: 767px) {
+     table {
+       font-size: 1.5em;
+     }
+   }
+
+   @media(min-width: 768px) {
+     table {
+       font-size: 1em;
+     }
    }
 
    table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th,table.wikitable > * > tr > td {
@@ -482,6 +572,13 @@
    table.wikitable > tr > td, table.wikitable > * > tr > td {
      word-wrap: break-word;
    }
+   
+   .measure-row > .measure-column > div {
+     border: 0.5px solid #a2a9b1;
+     padding: 0.2em 0.4em;
+   }
+
+   
    code {
      color: #000;
      background-color: #f8f9fa;
@@ -504,50 +601,17 @@
      grid-column-gap: 6px;
      grid-row-gap:6px;
    }
+
+   .measure-row {
+     display: flex;
+     flex-wrap: wrap;
+   }
+
+   .measure-column {
+     display: flex;
+     flex-direction: column;
+   }
    
   </style>
   </body>
 </html>
-
-<!-- 
-
-     <tr valign="top" align="center">
-     <th><i>B</i></th>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B0" class="mw-redirect" title="ば">ば</a></big><br>
-     ba <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[ba]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B3" class="mw-redirect" title="び">び</a></big><br>
-     bi <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bi]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B6" class="mw-redirect" title="ぶ">ぶ</a></big><br>
-     bu <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bɯ]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B9" class="mw-redirect" title="べ">べ</a></big><br>
-     be <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[be]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%BC" class="mw-redirect" title="ぼ">ぼ</a></big><br>
-     bo <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bo]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B3%E3%82%83" class="mw-redirect" title="びゃ">びゃ</a></big><br>
-     bya <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bʲa]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B3%E3%82%85" class="mw-redirect" title="びゅ">びゅ</a></big><br>
-     byu <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bʲɯ]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B3%E3%82%87" class="mw-redirect" title="びょ">びょ</a></big><br>
-     byo <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[bʲo]</a></span></td>
-     </tr>
-     <tr valign="top" align="center">
-     <th><i>P</i></th>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B1" class="mw-redirect" title="ぱ">ぱ</a></big><br>
-     pa <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pa]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B4" class="mw-redirect" title="ぴ">ぴ</a></big><br>
-     pi <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pi]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%B7" class="mw-redirect" title="ぷ">ぷ</a></big><br>
-     pu <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pɯ]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%BA" class="mw-redirect" title="ぺ">ぺ</a></big><br>
-     pe <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pe]</a></span></td>
-     <td bgcolor="#EFFAFA"><big><a href="/wiki/%E3%81%BD" class="mw-redirect" title="ぽ">ぽ</a></big><br>
-     po <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[po]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B4%E3%82%83" class="mw-redirect" title="ぴゃ">ぴゃ</a></big><br>
-     pya <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pʲa]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B4%E3%82%85" class="mw-redirect" title="ぴゅ">ぴゅ</a></big><br>
-     pyu <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pʲɯ]</a></span></td>
-     <td bgcolor="#F3F5DE"><big><a href="/wiki/%E3%81%B4%E3%82%87" class="mw-redirect" title="ぴょ">ぴょ</a></big><br>
-     pyo <span title="Representation in the International Phonetic Alphabet (IPA)" class="IPA"><a href="/wiki/Help:IPA/Japanese" title="Help:IPA/Japanese">[pʲo]</a></span></td>
-     </tr>
-     </tbody></table>
--->
