@@ -95,13 +95,18 @@
      }
 
      function overwrite(event) {
-       // const start = event.selectionStart;
-       // const end = event.selectionEnd;
-       
+       const start = event.selectionStart;
+       const end = event.selectionEnd;
+       // console.log(event.selectionStart);
+       // console.log(event.selectionEnd);
+       const romaji = event.value;
+       const hiragana = romaji_to_hiragana_safe(event.value);
        event.value = romaji_to_hiragana_safe(event.value);
 
+       var d = hiragana.length - romaji.length
+
        // restore from variables...
-       // event.setSelectionRange(start, end);
+       event.setSelectionRange(start + d, end + d);
      }     
     </script>
   </head>
@@ -203,7 +208,7 @@
 	<td><big>を</big></td>
       </tr>
       <tr align="center">
-	<td colspan="6"><big><a href="/wiki/%E3%82%93" class="mw-redirect" title="ん">ん</a></big> <b>(<i>n</i>)</b></td>
+	<td colspan="6"><big>ん</big> <b>(<i>n</i>)</b></td>
       </tr>
       <tr>
 	<th colspan="6">Functional marks<br>
@@ -259,9 +264,9 @@
 	<td bgcolor="#EFFAFA"><big>す</big><br><code>su</code></td>
 	<td bgcolor="#EFFAFA"><big>せ</big><br><code>se</code></td>
 	<td bgcolor="#EFFAFA"><big>そ</big><br><code>so</code></td>
-	<td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code></td>
-	<td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code></td>
-	<td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code></td>
+	<td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code>,<code>sya</code></td>
+	<td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code>,<code>syu</code></td>
+	<td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code>,<code>syo</code></td>
       </tr>
       <tr valign="top" align="center">
 	<th>た行</th>
@@ -330,9 +335,9 @@
       <tr valign="top" align="center">
 	<th>わ行</th>
 	<td bgcolor="#EFFAFA"><big>わ</big><br><code>wa</code></td>
-	<td bgcolor="#EFFAFA"><big style="color:#808080">ゐ</big><br><code>wi</code></td>
+	<td bgcolor="#EFFAFA"><big style="color:#808080">ゐ</big><br><code>wyi</code>,<code>wi</code></td>
 	<td bgcolor="#E9E9E9"></td>
-	<td bgcolor="#EFFAFA"><big style="color:#808080">ゑ</big><br><code>we</code></td>
+	<td bgcolor="#EFFAFA"><big style="color:#808080">ゑ</big><br><code>wye</code>,<code>we</code></td>
 	<td bgcolor="#EFFAFA"><big>を</big><br><code>wo</code></td>
 	<td colspan="3" bgcolor="#E9E9E9"></td>
       </tr>
@@ -343,8 +348,8 @@
 
       <tr valign="top" align="center">
 	<th>特別</th>
-	<td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n</code>と<code>いずれかの子音</code></td>
-	<td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>,<code>ltu</code>,<code>xtsu</code>,<code>xtu</code></td>
+	<td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>,<code>n'</code> <code>n</code>と<code>いずれかの子音</code></td>
+	<td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>,<code>ltu</code>,<code>xtsu</code>,<code>xtu</code>,子音字を重ねる</td>
       </tr>
 
       <tr>
@@ -382,9 +387,9 @@
 	<td bgcolor="#EFFAFA"><big>ず</big><br><code>zu</code></td>
 	<td bgcolor="#EFFAFA"><big>ぜ</big><br><code>ze</code></td>
 	<td bgcolor="#EFFAFA"><big>ぞ</big><br><code>zo</code></td>
-	<td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code>,<code>jya</code></td>
-	<td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code>,<code>jyu</code></td>
-	<td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code>,<code>jyo</code></td>
+	<td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code>,<code>jya</code>,<code>zya</code></td>
+	<td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code>,<code>jyu</code>,<code>zyu</code></td>
+	<td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code>,<code>jyo</code>,<code>zyo</code></td>
       </tr>
 
       <tr valign="top" align="center">
