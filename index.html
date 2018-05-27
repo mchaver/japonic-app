@@ -116,6 +116,12 @@
        document.getElementById("overwrite-text-button").checked = true;
        document.getElementById("jp-button").checked = true;
        document.getElementById("small-input-button").checked = true;
+       document.getElementById("hide-uncommon").checked = true;
+
+       var divsToHide = document.getElementsByClassName("uncommon");
+       for (var i = 0; i < divsToHide.length; i++) {
+         divsToHide[i].style.display = 'none';
+       }
      }
 
      var inputStyle = 'overwrite';
@@ -199,23 +205,21 @@
 	   center.classList.add('xlarge-nav');
 	 }
        }
-
-
      }
 
+     function showUncommon(r) {
+       var divsToHide = document.getElementsByClassName("uncommon");
 
-     
-     /*
-	var yourUl = document.getElementById("yourUlId");
-	yourUl.style.display = yourUl.style.display === 'none' ? '' : 'none';
-      */
-     /*
-	var divsToHide = document.getElementsByClassName("classname"); //divsToHide is an array
-	for(var i = 0; i < divsToHide.length; i++){
-        divsToHide[i].style.visibility = "hidden"; // or
-        divsToHide[i].style.display = "none"; // depending on what you're doing
-	}
-      */
+       if (r.value === 'hide') {
+	 for (var i = 0; i < divsToHide.length; i++) {
+	   divsToHide[i].style.display = 'none';
+	 }
+       } else if (r.value === 'show') {
+	 for (var i = 0; i < divsToHide.length; i++) {
+	   divsToHide[i].style.display = '';
+	 }
+       }
+     }
     </script>
   </head>
   <body>
@@ -233,31 +237,38 @@
       </div>
 
       <div class="settings">
-      <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="transliteration-button" value="overwrite" id="overwrite-text-button" onclick="setInput(this,'style');" checked />
-	<label for="overwrite-text-button">Overwrite</label>
-	<input type="radio" class="stv-radio-button" name="transliteration-button" value="preserve" id="preserve-text-button" onclick="setInput(this,'style');" />
-	<label for="preserve-text-button">Preserve</label>
-      </div>
+	<div class="stv-radio-buttons-wrapper">
+	  <input type="radio" class="stv-radio-button" name="transliteration-button" value="overwrite" id="overwrite-text-button" onclick="setInput(this,'style');" checked />
+	  <label for="overwrite-text-button">Overwrite</label>
+	  <input type="radio" class="stv-radio-button" name="transliteration-button" value="preserve" id="preserve-text-button" onclick="setInput(this,'style');" />
+	  <label for="preserve-text-button">Preserve</label>
+	</div>
 
-      <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="language-button" value="1" id="jp-button" onclick="setLanguage(this);" checked />
-	<label for="jp-button">Japanese</label>
-	<input type="radio" class="stv-radio-button" name="language-button" value="2" id="en-button" onclick="setLanguage(this);" />
-	<label for="en-button">English</label>
-      </div>
+	<div class="stv-radio-buttons-wrapper">
+	  <input type="radio" class="stv-radio-button" name="language-button" value="1" id="jp-button" onclick="setLanguage(this);" checked />
+	  <label for="jp-button">Japanese</label>
+	  <input type="radio" class="stv-radio-button" name="language-button" value="2" id="en-button" onclick="setLanguage(this);" />
+	  <label for="en-button">English</label>
+	</div>
 
-      <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="text-size-button" value="small" id="small-input-button" onclick="setInput(this,'size');" checked />
-	<label for="small-input-button">Small</label>
-	<input type="radio" class="stv-radio-button" name="text-size-button" value="large" id="large-input-button" onclick="setInput(this,'size');" />
-	<label for="large-input-button">Large</label>
-      </div>
+	<div class="stv-radio-buttons-wrapper">
+	  <input type="radio" class="stv-radio-button" name="text-size-button" value="small" id="small-input-button" onclick="setInput(this,'size');" checked />
+	  <label for="small-input-button">Small</label>
+	  <input type="radio" class="stv-radio-button" name="text-size-button" value="large" id="large-input-button" onclick="setInput(this,'size');" />
+	  <label for="large-input-button">Large</label>
+	</div>
+
+	<div class="stv-radio-buttons-wrapper">
+	  <input type="radio" class="stv-radio-button" name="uncommon" value="hide" id="hide-uncommon" onclick="showUncommon(this);" checked />
+	  <label for="hide-uncommon">Hide Uncommon</label>
+	  <input type="radio" class="stv-radio-button" name="uncommon" value="show" id="show-uncommon" onclick="showUncommon(this);" />
+	  <label for="show-uncommon">Show Uncommon</label>
+	</div>
       </div>
 
     </div>
 
-    <table class="wikitable nowraplinks" style="vertical-align:top;padding:2px;margin:10em 0 0 2em;" width="95%" cellpadding="2" border="0">
+   <table class="kanatable nowraplinks" style="vertical-align:top;padding:2px;margin:10em 0 0 2em;" width="95%" cellpadding="2" border="0">
       <tbody>
 	<caption>ローマ字入力</caption>
 	<tr>
@@ -287,9 +298,9 @@
 	  <td bgcolor="#EFFAFA"><big>く</big><br><code>ku</code></td>
 	  <td bgcolor="#EFFAFA"><big>け</big><br><code>ke</code></td>
 	  <td bgcolor="#EFFAFA"><big>こ</big><br><code>ko</code></td>
-	  <td bgcolor="#F3F5DE"><big>きゃ</big><br><code>kya</code>, <code>kixya</code></td>
-	  <td bgcolor="#F3F5DE"><big>きゅ</big><br><code>kyu</code>, <code>kixyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>きょ</big><br><code>kyo</code>, <code>kixyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>きゃ</big><br><code>kya</code><span class="uncommon">, <code>kilya</code>, <code>kixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>きゅ</big><br><code>kyu</code><span class="uncommon">, <code>kilyu</code>, <code>kixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>きょ</big><br><code>kyo</code><span class="uncommon">, <code>kilyo</code>, <code>kixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>さ行</th>
@@ -298,9 +309,9 @@
 	  <td bgcolor="#EFFAFA"><big>す</big><br><code>su</code></td>
 	  <td bgcolor="#EFFAFA"><big>せ</big><br><code>se</code></td>
 	  <td bgcolor="#EFFAFA"><big>そ</big><br><code>so</code></td>
-	  <td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code>, <code>shixya</code>, <code>sya</code></td>
-	  <td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code>, <code>shixyu</code>, <code>syu</code></td>
-	  <td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code>, <code>shixyo</code>, <code>syo</code></td>
+	  <td bgcolor="#F3F5DE"><big>しゃ</big><br><code>sha</code>, <code>sya</code><span class="uncommon">, <code>shilya</code>, <code>shixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>しゅ</big><br><code>shu</code>, <code>syu</code><span class="uncommon">, <code>shilyo</code>, <code>shixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>しょ</big><br><code>sho</code>, <code>syo</code><span class="uncommon">, <code>shilyu</code>, <code>shixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>た行</th>
@@ -309,9 +320,9 @@
 	  <td bgcolor="#EFFAFA"><big>つ</big><br><code>tsu</code>, <code>tu</code></td>
 	  <td bgcolor="#EFFAFA"><big>て</big><br><code>te</code></td>
 	  <td bgcolor="#EFFAFA"><big>と</big><br><code>to</code></td>
-	  <td bgcolor="#F3F5DE"><big>ちゃ</big><br><code>cha</code>, <code>tixya</code>, <code>tya</code></td>
-	  <td bgcolor="#F3F5DE"><big>ちゅ</big><br><code>chu</code>, <code>tixyu</code>, <code>tyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>ちょ</big><br><code>cho</code>, <code>tixyu</code>, <code>tyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ちゃ</big><br><code>cha</code>, <code>tya</code><span class="uncommon">, <code>tilya</code>, <code>tixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ちゅ</big><br><code>chu</code>, <code>tyu</code><span class="uncommon">, <code>tilyu</code>, <code>tixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ちょ</big><br><code>cho</code>, <code>tyo</code><span class="uncommon">, <code>tilyo</code>, <code>tixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>な行</th>
@@ -320,9 +331,9 @@
 	  <td bgcolor="#EFFAFA"><big>ぬ</big><br><code>nu</code></td>
 	  <td bgcolor="#EFFAFA"><big>ね</big><br><code>ne</code></td>
 	  <td bgcolor="#EFFAFA"><big>の</big><br><code>no</code></td>
-	  <td bgcolor="#F3F5DE"><big>にゃ</big><br><code>nya</code>, <code>nixya</code></td>
-	  <td bgcolor="#F3F5DE"><big>にゅ</big><br><code>nyu</code>, <code>nixyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>にょ</big><br><code>nyo</code>, <code>nixyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>にゃ</big><br><code>nya</code><span class="uncommon">, <code>nilya</code>, <code>nixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>にゅ</big><br><code>nyu</code><span class="uncommon">, <code>nilyu</code>, <code>nixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>にょ</big><br><code>nyo</code><span class="uncommon">, <code>nilyo</code>, <code>nixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>は行</th>
@@ -331,9 +342,9 @@
 	  <td bgcolor="#EFFAFA"><big>ふ</big><br><code>hu</code></td>
 	  <td bgcolor="#EFFAFA"><big>へ</big><br><code>he</code></td>
 	  <td bgcolor="#EFFAFA"><big>ほ</big><br><code>ho</code></td>
-	  <td bgcolor="#F3F5DE"><big>ひゃ</big><br><code>hya</code>, <code>hixya</code></td>
-	  <td bgcolor="#F3F5DE"><big>ひゅ</big><br><code>hyu</code>, <code>hixyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>ひょ</big><br><code>hyo</code>, <code>hixyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ひゃ</big><br><code>hya</code><span class="uncommon">, <code>hilya</code>, <code>hixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ひゅ</big><br><code>hyu</code><span class="uncommon">, <code>hilyu</code>, <code>hixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ひょ</big><br><code>hyo</code><span class="uncommon">, <code>hilyo</code>, <code>hixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>ま行</th>
@@ -342,9 +353,9 @@
 	  <td bgcolor="#EFFAFA"><big>む</big><br><code>mu</code></td>
 	  <td bgcolor="#EFFAFA"><big>め</big><br><code>me</code></td>
 	  <td bgcolor="#EFFAFA"><big>も</big><br><code>mo</code></td>
-	  <td bgcolor="#F3F5DE"><big>みゃ</big><br><code>mya</code>, <code>mixya</code></td>
-	  <td bgcolor="#F3F5DE"><big>みゅ</big><br><code>myu</code>, <code>mixyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>みょ</big><br><code>myo</code>, <code>mixyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>みゃ</big><br><code>mya</code><span class="uncommon">, <code>milya</code>, <code>mixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>みゅ</big><br><code>myu</code><span class="uncommon">, <code>milyu</code>, <code>mixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>みょ</big><br><code>myo</code><span class="uncommon">, <code>milyo</code>, <code>mixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>や行</th>
@@ -362,9 +373,9 @@
 	  <td bgcolor="#EFFAFA"><big>る</big><br><code>ru</code></td>
 	  <td bgcolor="#EFFAFA"><big>れ</big><br><code>re</code></td>
 	  <td bgcolor="#EFFAFA"><big>ろ</big><br><code>ro</code></td>
-	  <td bgcolor="#F3F5DE"><big>りゃ</big><br><code>rya</code>, <code>rixya</code></td>
-	  <td bgcolor="#F3F5DE"><big>りゅ</big><br><code>ryu</code>, <code>rixyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>りょ</big><br><code>ryo</code>, <code>rixyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>りゃ</big><br><code>rya</code><span class="uncommon">, <code>rilya</code>, <code>rixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>りゅ</big><br><code>ryu</code><span class="uncommon">, <code>rilyu</code>, <code>rixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>りょ</big><br><code>ryo</code><span class="uncommon">, <code>rilyo</code>, <code>rixyo</code></span></td>
 	</tr>
 	<tr valign="top" align="center">
 	  <th>わ行</th>
@@ -462,6 +473,8 @@
 	  <td bgcolor="#F3F5DE"><big>ぴょ</big><br><code>pyo</code></td>
 	</tr>
 
+      </tbody>
+      <tbody class="uncommon">
 	<tr valign="top" align="center">
 	  <td colspan="9">特別</td>
 	</tr>
@@ -564,8 +577,13 @@
 	
       </tbody>
     </table>
-    
+    <div class="space"></div>
     <style>
+
+     .space {
+       margin-top: 20em;
+       margin-bottom: 20em;
+     }
      #overwrite, #preserve-input {
        padding-top: 0.12em;
        font-size: 2em;
@@ -585,7 +603,7 @@
        margin-top: 0.5em;
      }
 
-     table.wikitable {
+     table.kanatable {
        background-color: #f8f9fa;
        color: #222;
        margin: 1em 0;
@@ -613,12 +631,12 @@
        }
      }
 
-     table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th,table.wikitable > * > tr > td {
+     table.kanatable > tr > th, table.kanatable > tr > td, table.kanatable > * > tr > th,table.kanatable > * > tr > td {
        border: 1px solid #a2a9b1;
        padding: 0.2em 0.4em;
      }
 
-     table.wikitable > tr > td, table.wikitable > * > tr > td {
+     table.kanatable > tr > td, table.kanatable > * > tr > td {
        word-wrap: break-word;
      }
      
