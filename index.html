@@ -93,11 +93,14 @@
        document.getElementById("result").innerHTML = romaji_to_hiragana(event.value);
      }
 
+     function preserve(event) {
+       document.getElementById("preserve-output").innerHTML = romaji_to_hiragana_safe(event.value);
+     }
+
      function overwrite(event) {
        const start = event.selectionStart;
        const end = event.selectionEnd;
-       // console.log(event.selectionStart);
-       // console.log(event.selectionEnd);
+
        const romaji = event.value;
        const hiragana = romaji_to_hiragana_safe(event.value);
        event.value = romaji_to_hiragana_safe(event.value);
@@ -110,53 +113,148 @@
 
      window.onload = function() {
        document.getElementById("overwrite").focus();
+       document.getElementById("overwrite-text-button").checked = true;
+       document.getElementById("jp-button").checked = true;
+       document.getElementById("small-input-button").checked = true;
      }
+
+     var inputStyle = 'overwrite';
+     var inputSize = 'small';
+
+     function setOverwrite(r) {
+       
+       if (inputStyle === 'overwrite') {
+	 var overwrite_group = document.getElementById("overwrite-group");
+	 var preserve_group = document.getElementById("preserve-group");
+	 overwrite_group.style.display = '';
+	 preserve_group.style.display = 'none';
+
+       } else if (inputStyle === 'preserve') {
+	 var overwrite_group = document.getElementById("overwrite-group");
+	 var preserve_group = document.getElementById("preserve-group");
+	 overwrite_group.style.display = 'none';
+	 preserve_group.style.display = '';
+       }
+     }
+
+     function setLanguage(r) {
+       if (r.value === '1') {
+
+       } else if (r.value === '2') {
+
+       }
+     }
+
+     function setInput(r, typ) {
+       if (typ === 'style') {
+	 inputStyle = r.value;
+
+	 if (inputStyle === 'overwrite') {
+	   var overwrite_group = document.getElementById("overwrite-group");
+	   var preserve_group = document.getElementById("preserve-group");
+	   overwrite_group.style.display = '';
+	   preserve_group.style.display = 'none';
+
+	 } else if (inputStyle === 'preserve') {
+	   var overwrite_group = document.getElementById("overwrite-group");
+	   var preserve_group = document.getElementById("preserve-group");
+	   overwrite_group.style.display = 'none';
+	   preserve_group.style.display = '';
+	 }
+       } else if (typ === 'size') {
+	 inputSize = r.value;
+       }
+       
+       var overwrite = document.getElementById("overwrite");
+       var preserve_input = document.getElementById("preserve-input");
+       var center = document.getElementById("center");
+
+
+       if (inputSize === 'small') {
+	 overwrite.rows = '1';
+	 preserve_input.rows = '1';
+	 overwrite.style.height = '1.4em';
+	 preserve_input.style.height = '1.4em';
+       } else {
+	 overwrite.rows = '4';
+	 preserve_input.rows = '4';
+	 overwrite.style.height = '5.6em';
+	 preserve_input.style.height = '5.6em';
+       }
+
+       if (inputStyle === 'overwrite') {
+	 if (inputSize === 'small') {
+	   center.className = '';
+	   center.classList.add('small-nav');
+	 } else {
+	   center.className = '';
+	   center.classList.add('large-nav');
+	 }
+       } else if (inputStyle === 'preserve') {
+	 if (inputSize === 'small') {
+	   center.className = '';
+	   center.classList.add('medium-nav');
+	 } else {
+	   center.className = '';
+	   center.classList.add('xlarge-nav');
+	 }
+       }
+
+
+     }
+
+
+     
+     /*
+	var yourUl = document.getElementById("yourUlId");
+	yourUl.style.display = yourUl.style.display === 'none' ? '' : 'none';
+      */
+     /*
+	var divsToHide = document.getElementsByClassName("classname"); //divsToHide is an array
+	for(var i = 0; i < divsToHide.length; i++){
+        divsToHide[i].style.visibility = "hidden"; // or
+        divsToHide[i].style.display = "none"; // depending on what you're doing
+	}
+      */
     </script>
   </head>
   <body>
     <!-- <p id="result"></p>
 	 <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
     -->
-    <div class="center">
-      <input id="overwrite" type="text"  onkeyup="overwrite(this)"></input>
+    <div id="center" class="small-nav">
+      <div id="preserve-group" style="display: none;">
+	<p id="preserve-output"></p>
+	<textarea id="preserve-input" type="text" rows="1" onkeyup="preserve(this)"></textarea>
+      </div>
 
+      <div id="overwrite-group">
+	<textarea id="overwrite" type="text" rows="1" onkeyup="overwrite(this)"></textarea>
+      </div>
+
+      <div class="settings">
       <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="transliteration-button" value="1" id="overwrite-text-button" checked />
+	<input type="radio" class="stv-radio-button" name="transliteration-button" value="overwrite" id="overwrite-text-button" onclick="setInput(this,'style');" checked />
 	<label for="overwrite-text-button">Overwrite</label>
-	<input type="radio" class="stv-radio-button" name="transliteration-button" value="2" id="preserve-text-button" />
+	<input type="radio" class="stv-radio-button" name="transliteration-button" value="preserve" id="preserve-text-button" onclick="setInput(this,'style');" />
 	<label for="preserve-text-button">Preserve</label>
       </div>
 
       <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="language-button" value="1" id="jp-button" checked />
+	<input type="radio" class="stv-radio-button" name="language-button" value="1" id="jp-button" onclick="setLanguage(this);" checked />
 	<label for="jp-button">Japanese</label>
-	<input type="radio" class="stv-radio-button" name="language-button" value="2" id="en-button" />
+	<input type="radio" class="stv-radio-button" name="language-button" value="2" id="en-button" onclick="setLanguage(this);" />
 	<label for="en-button">English</label>
       </div>
 
       <div class="stv-radio-buttons-wrapper">
-	<input type="radio" class="stv-radio-button" name="text-size-button" value="1" id="small-input-button" checked />
+	<input type="radio" class="stv-radio-button" name="text-size-button" value="small" id="small-input-button" onclick="setInput(this,'size');" checked />
 	<label for="small-input-button">Small</label>
-	<input type="radio" class="stv-radio-button" name="text-size-button" value="2" id="large-input-button" />
+	<input type="radio" class="stv-radio-button" name="text-size-button" value="large" id="large-input-button" onclick="setInput(this,'size');" />
 	<label for="large-input-button">Large</label>
       </div>
+      </div>
 
-      <table>
-	<tbody>
-	  <tr>
-	    <td width="50" rowspan="2">
-	      <label class="switch">
-		<input type="checkbox">
-		<span class="slider round"></span>
-	      </label>
-	    </td>
-	    <td>A</td>
-	  </tr>
-	  <tr>
-	    <td>B</td>
-	  </tr>
-	</tbody>
-      </table>
     </div>
 
     <table class="wikitable nowraplinks" style="vertical-align:top;padding:2px;margin:10em 0 0 2em;" width="95%" cellpadding="2" border="0">
@@ -468,9 +566,23 @@
     </table>
     
     <style>
-     #result,  #box, #overwrite {
+     #overwrite, #preserve-input {
+       padding-top: 0.12em;
        font-size: 2em;
+       height: 1.4em;
        color: black;
+       resize: none;
+       overflow: hidden;
+       /* border: 1px solid rgba(34,36,38,.15); */
+       /* border-radius: .1em; */
+     }
+
+     #overwrite {
+       margin-top: .25em;
+     }
+
+     .settings {
+       margin-top: 0.5em;
      }
 
      table.wikitable {
@@ -485,11 +597,19 @@
        table {
 	 font-size: 1.5em;
        }
+
+       #overwrite, #preserve-input {
+	 width: 90%;
+       }
      }
 
      @media(min-width: 768px) {
        table {
 	 font-size: 1em;
+       }
+
+       #overwrite, #preserve-input {
+	 width: 50%;
        }
      }
 
@@ -512,33 +632,33 @@
        font-size: 0.875em;
      }
 
-     #overwrite {
-       margin-top: .25em;
-     }
-
-     .center {
+     #center {
        text-align: center;
        position:fixed;
        top:0;
        background-color: white;
-       height: 7em;
        width:100vw;
        z-index:100;
-
        box-shadow: 0 4px 5px -2px grey;
-       /* box-shadow: 0px 0px 5px grey; */
      }
 
-     /* .center:after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	bottom: 1px;
-	z-index: -1;
-	transform:scale(.9);
-	box-shadow: 0px 0px 8px 2px #000000;
-	} */
      
+     .small-nav {
+       height: 5.5em;
+     }
+     
+     .medium-nav {
+       height: 8em;
+     }
+
+     .large-nav {
+       height: 12.5em;
+     }
+
+     .xlarge-nav {
+       height: 15em;
+     }
+
      .fixedElement {
        background-color: #c0c0c0;
        position:fixed;
@@ -547,92 +667,11 @@
        z-index:100;
      }
 
-
-
-     .switch {
-       position: relative;
-       display: inline-block;
-       width: 34px;
-       height: 60px;
-     }
-
-     .switch input {display:none;}
-
-     .slider {
-       position: absolute;
-       cursor: pointer;
-       top: 0;
-       left: 0;
-       right: 0;
-       bottom: 0;
-       background-color: #ccc;
-       -webkit-transition: .4s;
-       transition: .4s;
-     }
-
-     .slider:before {
-       position: absolute;
-       content: "";
-       height: 26px;
-       width: 26px;
-       left: 4px;
-       top: 4px;
-       background-color: white;
-       -webkit-transition: .4s;
-       transition: .4s;
-     }
-
-     /* .slider:before {
-	position: absolute;
-	content: "";
-	height: 26px;
-	width: 26px;
-	left: 4px;
-	bottom: 4px;
-	background-color: white;
-	-webkit-transition: .4s;
-	transition: .4s;
-	} */
-
-     /* input:checked + .slider {
-	background-color: #2196F3;
-	}
-
-	input:focus + .slider {
-	box-shadow: 0 0 1px #2196F3;
-	}
-      */
      input:checked + .slider:before {
        -webkit-transform: translateY(26px);
        -ms-transform: translateY(26px);
        transform: translateY(26px);
      }
-
-     /* Rounded sliders */
-     .slider.round {
-       border-radius: 34px;
-     }
-
-     .slider.round:before {
-       border-radius: 50%;
-     }
-
-
-
-     /* html {
-	box-sizing: border-box;
-	}
-
-      *,
-      *:before,
-      *:after {
-	box-sizing: inherit;
-	}
-
-	body { 
-	font-family: 'Open Sans', sans-serif;
-	}
-      */
 
      html {
        box-sizing: border-box;
@@ -651,6 +690,7 @@
      .stv-radio-buttons-wrapper {
        clear: both;
        display: inline-block;
+       font-size: 0.75em;
      }
 
      .stv-radio-button {
@@ -659,6 +699,7 @@
        left: -9999em;
        top: -9999em;
      }
+     
      .stv-radio-button + label {
        float: left;
        padding: .5em 1em;
@@ -669,13 +710,9 @@
        background-color: #fff;
      }
      .stv-radio-button + label:first-of-type {
-       /* border-radius: .7em 0 0 .7em; */
-
        border-radius: .28571429rem 0 0 .28571429rem;
      }
      .stv-radio-button + label:last-of-type {
-       /* border-radius: 0 .7em .7em 0; */
-
        border-radius: 0 .28571429rem .28571429rem 0;
      }
      .stv-radio-button:checked + label {
