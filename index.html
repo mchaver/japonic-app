@@ -109,6 +109,16 @@
        event.setSelectionRange(start + d, end + d);
      }
 
+     function getParameterByName(name, url) {
+       if (!url) url = window.location.href;
+       name = name.replace(/[\[\]]/g, "\\$&");
+       var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+           results = regex.exec(url);
+       if (!results) return null;
+       if (!results[2]) return '';
+       return decodeURIComponent(results[2].replace(/\+/g, " "));
+     }
+
      window.onload = function() {
        document.getElementById('overwrite').focus();
        document.getElementById('overwrite-text-button').checked = true;
@@ -116,15 +126,23 @@
        document.getElementById('small-input-button').checked = true;
        document.getElementById('hide-uncommon').checked = true;
 
+       var lang = getParameterByName('lang');
+
+       if (lang === 'jp') {
+	 document.getElementById('en-button').checked = false;
+	 document.getElementById('jp-button').checked = true;
+	 showJapanese();
+       } else {
+	 document.getElementById('en-button').checked = true;
+	 document.getElementById('jp-button').checked = false;
+	 showEnglish();
+       }
+
        var divsToHide = document.getElementsByClassName('uncommon');
        for (var i = 0; i < divsToHide.length; i++) {
          divsToHide[i].style.display = 'none';
        }
 
-       var divsToShow = document.getElementsByClassName('en');
-       for (var i = 0; i < divsToShow.length; i++) {
-         divsToShow[i].lang = 'en';
-       }
      }
 
      function showJapanese() {
@@ -235,9 +253,6 @@
     </script>
   </head>
   <body>
-    <!-- <p id="result"></p>
-	 <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
-    -->
     <div id="nav" class="small-nav">
       <div id="preserve-group" style="display: none;">
 	<p id="preserve-output"></p>
@@ -292,12 +307,12 @@
 	  <input type="radio" class="stv-radio-button" name="uncommon" value="hide" id="hide-uncommon" onclick="showUncommon(this);" checked />
 	  <label for="hide-uncommon">
 	    <span class="en">Hide Uncommon</span>
-	    <span class="jp">低頻度語を隠す</span>
+	    <span class="jp">低頻度入力方法を隠す</span>
 	  </label>
 	  <input type="radio" class="stv-radio-button" name="uncommon" value="show" id="show-uncommon" onclick="showUncommon(this);" />
 	  <label for="show-uncommon">
 	    <span class="en">Show Uncommon</span>
-	    <span class="jp">低頻度語を表す</span>
+	    <span class="jp">低頻度入力方法を表す</span>
 	  </label>
 	</div>
       </div>
@@ -552,9 +567,9 @@
 	  <td bgcolor="#EFFAFA"><big>ぐ</big><br><code>gu</code></td>
 	  <td bgcolor="#EFFAFA"><big>げ</big><br><code>ge</code></td>
 	  <td bgcolor="#EFFAFA"><big>ご</big><br><code>go</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぎゃ</big><br><code>gya</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぎゅ</big><br><code>gyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぎょ</big><br><code>gyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぎゃ</big><br><code>gya</code><span class="uncommon">, <code>gilya</code>, <code>gixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぎゅ</big><br><code>gyu</code><span class="uncommon">, <code>gilyu</code>, <code>gixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぎょ</big><br><code>gyo</code><span class="uncommon">, <code>gilyo</code>, <code>gixyo</code></span></td>
 	</tr>
 
 	<tr valign="top" align="center">
@@ -563,13 +578,13 @@
 	    <span class="jp">ざ行</span>
 	  </th>
 	  <td bgcolor="#EFFAFA"><big>ざ</big><br><code>za</code></td>
-	  <td bgcolor="#EFFAFA"><big>じ</big><br><code>ji</code></td>
-	  <td bgcolor="#EFFAFA"><big>ず</big><br><code>zu</code></td>
-	  <td bgcolor="#EFFAFA"><big>ぜ</big><br><code>ze</code></td>
-	  <td bgcolor="#EFFAFA"><big>ぞ</big><br><code>zo</code></td>
-	  <td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code>, <code>jya</code>, <code>zya</code></td>
-	  <td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code>, <code>jyu</code>, <code>zyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code>, <code>jyo</code>, <code>zyo</code></td>
+	  <td bgcolor="#EFFAFA"><big>じ</big><br><code>ji</code>, <code>zi</code></td>
+	    <td bgcolor="#EFFAFA"><big>ず</big><br><code>zu</code></td>
+	    <td bgcolor="#EFFAFA"><big>ぜ</big><br><code>ze</code></td>
+	    <td bgcolor="#EFFAFA"><big>ぞ</big><br><code>zo</code></td>
+	    <td bgcolor="#F3F5DE"><big>じゃ</big><br><code>ja</code><span class="uncommon">, <code>jiya</code>, <code>jya</code>, <code>ziya</code>, <code>zya</code></span></td>
+	    <td bgcolor="#F3F5DE"><big>じゅ</big><br><code>ju</code><span class="uncommon">, <code>jiyu</code>, <code>jyu</code>, <code>ziyu</code>, <code>zyu</code></span></td>
+	    <td bgcolor="#F3F5DE"><big>じょ</big><br><code>jo</code><span class="uncommon">, <code>jiyo</code>, <code>jyo</code>, <code>ziyo</code>, <code>zyo</code></span></td>
 	</tr>
 
 	<tr valign="top" align="center">
@@ -582,9 +597,9 @@
 	  <td bgcolor="#EFFAFA"><big>づ</big><br><code>du</code></td>
 	  <td bgcolor="#EFFAFA"><big>で</big><br><code>de</code></td>
 	  <td bgcolor="#EFFAFA"><big>ど</big><br><code>do</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぢゃ</big><br><code>dya</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぢゅ</big><br><code>dyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぢょ</big><br><code>dyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぢゃ</big><br><code>dya</code><span class="uncommon">, <code>dilya</code>, <code>dixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぢゅ</big><br><code>dyu</code><span class="uncommon">, <code>dilyu</code>, <code>dixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぢょ</big><br><code>dyo</code><span class="uncommon">, <code>dilyo</code>, <code>dixyo</code></span></td>
 	</tr>
 
 	<tr valign="top" align="center">
@@ -597,9 +612,9 @@
 	  <td bgcolor="#EFFAFA"><big>ぶ</big><br><code>bu</code></td>
 	  <td bgcolor="#EFFAFA"><big>べ</big><br><code>be</code></td>
 	  <td bgcolor="#EFFAFA"><big>ぼ</big><br><code>bo</code></td>
-	  <td bgcolor="#F3F5DE"><big>びゃ</big><br><code>bya</code></td>
-	  <td bgcolor="#F3F5DE"><big>びゅ</big><br><code>byu</code></td>
-	  <td bgcolor="#F3F5DE"><big>びょ</big><br><code>byo</code></td>
+	  <td bgcolor="#F3F5DE"><big>びゃ</big><br><code>bya</code><span class="uncommon">, <code>bilya</code>, <code>bixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>びゅ</big><br><code>byu</code><span class="uncommon">, <code>bilyu</code>, <code>bixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>びょ</big><br><code>byo</code><span class="uncommon">, <code>bilyo</code>, <code>bixyo</code></span></td>
 	</tr>
 
 	<tr valign="top" align="center">
@@ -612,19 +627,25 @@
 	  <td bgcolor="#EFFAFA"><big>ぷ</big><br><code>pu</code></td>
 	  <td bgcolor="#EFFAFA"><big>ぺ</big><br><code>pe</code></td>
 	  <td bgcolor="#EFFAFA"><big>ぽ</big><br><code>po</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぴゃ</big><br><code>pya</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぴゅ</big><br><code>pyu</code></td>
-	  <td bgcolor="#F3F5DE"><big>ぴょ</big><br><code>pyo</code></td>
+	  <td bgcolor="#F3F5DE"><big>ぴゃ</big><br><code>pya</code><span class="uncommon">, <code>pilya</code>, <code>pixya</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぴゅ</big><br><code>pyu</code><span class="uncommon">, <code>pilyu</code>, <code>pixyu</code></span></td>
+	  <td bgcolor="#F3F5DE"><big>ぴょ</big><br><code>pyo</code><span class="uncommon">, <code>pilyo</code>, <code>pixyo</code></span></td>
 	</tr>
 
       </tbody>
-      <tbody class="uncommon">
+      <tbody>
 	<tr valign="top" align="center">
-	  <td colspan="9">特別</td>
+	  <td colspan="9">
+	    <span class="en">Small kana</span>
+	    <span class="jp">捨て仮名</span>
+	  </td>
 	</tr>
 
 	<tr valign="top" align="center">
-	  <th rowspan="3" width="2%">捨て仮名</th>	
+	  <th>
+	    <span class="en">a</span>
+	    <span class="jp">あ行</span>
+	  </th>
 	  <td bgcolor="#EFFAFA"><big>ぁ</big><br><code>la</code>, <code>xa</code></td>
 	  <td bgcolor="#EFFAFA"><big>ぃ</big><br><code>li</code>, <code>xi</code></td>
 	  <td bgcolor="#EFFAFA"><big>ぅ</big><br><code>lu</code>, <code>xu</code></td>
@@ -636,6 +657,10 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th>
+	    <span class="en">k</span>
+	    <span class="jp">か行</span>
+	  </th>
 	  <td bgcolor="#EFFAFA"><big>ヵ</big><br><code>lka</code>, <code>xka</code></td>
 	  <td colspan="2" bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>ヶ</big><br><code>lke</code>, <code>xke</code></td>
@@ -644,14 +669,24 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th>
+	    <span class="en">w</span>
+	    <span class="jp">わ行</span>
+	  </th>
 	  <td bgcolor="#EFFAFA"><big>ゎ</big><br><code>lwa</code>, <code>xwa</code></td>
 	  <td colspan="4" bgcolor="#E9E9E9"></td>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	</tr>
 
+	<tr valign="top" align="center">
+	  <td colspan="9">
+	    <span class="en">Special kana</span>
+	    <span class="jp">特別な仮名</span>
+	  </td>
+	</tr>
 	
 	<tr valign="top" align="center">
-	  <th rowspan="9" width="2%">特別</th>	
+	  <th></th>
 	  <td bgcolor="#EFFAFA"><big>ゔぁ</big><br><code>va</code>, <code>vuxa</code></td>
 	  <td bgcolor="#EFFAFA"><big>ゔぃ</big><br><code>ve</code>, <code>vuxe</code></td>
 	  <td bgcolor="#EFFAFA"><big>ゔ</big><br><code>vu</code></td>
@@ -661,6 +696,7 @@
 	</tr>	
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>しぇ</big><br><code>she</code>, <code>shixe</code>, <code>sye</code></td>
 	  <td bgcolor="#E9E9E9"></td>
@@ -668,6 +704,7 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>ちぇ</big><br><code>che</code>, <code>chixe</code>, <code>cye</code></td>
 	  <td bgcolor="#E9E9E9"></td>
@@ -675,6 +712,7 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>じぇ</big><br><code>je</code>, <code>jixe</code>, <code>zye</code></td>
 	  <td bgcolor="#E9E9E9"></td>
@@ -682,6 +720,7 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>ぢぇ</big><br><code>dixe</code>, <code>dye</code></td>
 	  <td bgcolor="#E9E9E9"></td>
@@ -689,14 +728,17 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td bgcolor="#EFFAFA"><big>つぁ</big><br><code>tsa</code>, <code>tsuxa</code>, <code>tuxa</code></td>
-	  <td colspan="2" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>つぃ</big><br><code>tsi</code>, <code>tsuxi</code>, <code>tuxi</code></td>
+	  <td bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>つぇ</big><br><code>tse</code>, <code>tsuxe</code>, <code>tuxe</code></td>
 	  <td bgcolor="#EFFAFA"><big>つぉ</big><br><code>tso</code>, <code>tsuxo</code>, <code>tuxo</code></td>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>てぃ</big><br><code>texi</code>, <code>thi</code></td>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
@@ -704,13 +746,17 @@
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td bgcolor="#E9E9E9"></td>
 	  <td bgcolor="#EFFAFA"><big>でぃ</big><br><code>dexi</code>, <code>dhi</code></td>
 	  <td colspan="3" bgcolor="#E9E9E9"></td>
-	  <td colspan="3" bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#E9E9E9"></td>
+	  <td bgcolor="#EFFAFA"><big>でゅ</big><br><code>dexyu</code></td>
+	  <td bgcolor="#E9E9E9"></td>
 	</tr>
 
 	<tr valign="top" align="center">
+	  <th></th>
 	  <td bgcolor="#EFFAFA"><big>ふぁ</big><br><code>fa</code>, <code>fuxa</code></td>
 	  <td bgcolor="#EFFAFA"><big>ふぃ</big><br><code>fi</code>, <code>fuxi</code></td>
 	  <td bgcolor="#E9E9E9"></td>
@@ -721,20 +767,27 @@
 	
       </tbody>
     </table>
-    <div class="space"></div>
+
+    <div class="space">&nbsp;</div>
+
     <style>
+
+     body {
+       font-family: 'Open Sans', sans-serif;
+     }
 
      --nav-height: 5.5em;
 
      .space {
        margin-top: 20em;
        margin-bottom: 20em;
+       min-height: 20em;
      }
      
      #overwrite, #preserve-input {
-       padding-top: 0.12em;
+       padding: 0.3em 0.25em 0.25em 0.25em;
        font-size: 2em;
-       height: 1.4em;
+       height: 1.2em;
        color: black;
        resize: none;
        overflow: hidden;
@@ -866,16 +919,16 @@
        box-sizing: border-box;
      }
 
-     *,
-     *:before,
-     *:after {
-       box-sizing: inherit;
-     }
+     /* *,
+      *:before,
+      *:after {
+	box-sizing: inherit;
+	}
 
-     body {
-       font-family: 'Open Sans', sans-serif;
-     }
-
+	body {
+	font-family: 'Open Sans', sans-serif;
+	}
+      */
      .stv-radio-buttons-wrapper {
        clear: both;
        display: inline-block;
@@ -921,7 +974,11 @@
      /* show those elements that match their language class */
      .en:lang(en), .jp:lang(jp) {
        display: block;
-     } 
+     }
+
+     caption {
+       font-size: 2em;
+     }
 
     </style>
   </body>
