@@ -16,14 +16,14 @@
        const collectCString = function* () {
          let memory = new Uint8Array(module.memory.buffer);
          while (memory[ptr] !== 0) {
-           if (memory[ptr] === undefined) { throw new Error("Tried to read undef mem") }
+           if (memory[ptr] === undefined) { throw new Error('Tried to read undef mem') }
            yield memory[ptr]
            ptr += 1
          }
        }
 
        const buffer_as_u8 = new Uint8Array(collectCString())
-       const utf8Decoder = new TextDecoder("UTF-8");
+       const utf8Decoder = new TextDecoder('UTF-8');
        const buffer_as_utf8 = utf8Decoder.decode(buffer_as_u8);
        module.dealloc_str(orig_ptr);
        return buffer_as_utf8
@@ -39,13 +39,13 @@
        }
 
        const buffer_as_u8 = new Uint8Array(getData(ptr / 8, len / 8));
-       const utf8Decoder = new TextDecoder("UTF-8");
+       const utf8Decoder = new TextDecoder('UTF-8');
        const buffer_as_utf8 = utf8Decoder.decode(buffer_as_u8);
        return buffer_as_utf8;
      }
 
      function newString(module, str) {
-       const utf8Encoder = new TextEncoder("UTF-8");
+       const utf8Encoder = new TextEncoder('UTF-8');
        let string_buffer = utf8Encoder.encode(str)
        let len = string_buffer.length
        let ptr = module.alloc(len + 1)
@@ -84,17 +84,15 @@
            let outptr = exports.romaji_to_hiragana_safe(newString(exports, s));
            return copyCStr(exports, outptr);
          };
-         console.log(romaji_to_hiragana('arigatou'));
-
        });
      };
 
      function convert(event) {
-       document.getElementById("result").innerHTML = romaji_to_hiragana(event.value);
+       document.getElementById('result').innerHTML = romaji_to_hiragana(event.value);
      }
 
      function preserve(event) {
-       document.getElementById("preserve-output").innerHTML = romaji_to_hiragana_safe(event.value);
+       document.getElementById('preserve-output').innerHTML = romaji_to_hiragana_safe(event.value);
      }
 
      function overwrite(event) {
@@ -112,15 +110,44 @@
      }
 
      window.onload = function() {
-       document.getElementById("overwrite").focus();
-       document.getElementById("overwrite-text-button").checked = true;
-       document.getElementById("jp-button").checked = true;
-       document.getElementById("small-input-button").checked = true;
-       document.getElementById("hide-uncommon").checked = true;
+       document.getElementById('overwrite').focus();
+       document.getElementById('overwrite-text-button').checked = true;
+       document.getElementById('en-button').checked = true;
+       document.getElementById('small-input-button').checked = true;
+       document.getElementById('hide-uncommon').checked = true;
 
-       var divsToHide = document.getElementsByClassName("uncommon");
+       var divsToHide = document.getElementsByClassName('uncommon');
        for (var i = 0; i < divsToHide.length; i++) {
          divsToHide[i].style.display = 'none';
+       }
+
+       var divsToShow = document.getElementsByClassName('en');
+       for (var i = 0; i < divsToShow.length; i++) {
+         divsToShow[i].lang = 'en';
+       }
+     }
+
+     function showJapanese() {
+       var divsToHide = document.getElementsByClassName('en');
+       for (var i = 0; i < divsToHide.length; i++) {
+         divsToHide[i].removeAttribute('lang');
+       }
+       
+       var divsToShow = document.getElementsByClassName('jp');
+       for (var i = 0; i < divsToShow.length; i++) {
+         divsToShow[i].lang = 'jp';
+       }
+     }
+
+     function showEnglish() {
+       var divsToHide = document.getElementsByClassName('jp');
+       for (var i = 0; i < divsToHide.length; i++) {
+         divsToHide[i].removeAttribute('lang');
+       }
+       
+       var divsToShow = document.getElementsByClassName('en');
+       for (var i = 0; i < divsToShow.length; i++) {
+         divsToShow[i].lang = 'en';
        }
      }
 
@@ -130,24 +157,24 @@
      function setOverwrite(r) {
        
        if (inputStyle === 'overwrite') {
-	 var overwrite_group = document.getElementById("overwrite-group");
-	 var preserve_group = document.getElementById("preserve-group");
+	 var overwrite_group = document.getElementById('overwrite-group');
+	 var preserve_group = document.getElementById('preserve-group');
 	 overwrite_group.style.display = '';
 	 preserve_group.style.display = 'none';
 
        } else if (inputStyle === 'preserve') {
-	 var overwrite_group = document.getElementById("overwrite-group");
-	 var preserve_group = document.getElementById("preserve-group");
+	 var overwrite_group = document.getElementById('overwrite-group');
+	 var preserve_group = document.getElementById('preserve-group');
 	 overwrite_group.style.display = 'none';
 	 preserve_group.style.display = '';
        }
      }
 
      function setLanguage(r) {
-       if (r.value === '1') {
-
-       } else if (r.value === '2') {
-
+       if (r.value === 'en') {
+	 showEnglish();
+       } else if (r.value === 'jp') {
+	 showJapanese();
        }
      }
 
@@ -156,14 +183,14 @@
 	 inputStyle = r.value;
 
 	 if (inputStyle === 'overwrite') {
-	   var overwrite_group = document.getElementById("overwrite-group");
-	   var preserve_group = document.getElementById("preserve-group");
+	   var overwrite_group = document.getElementById('overwrite-group');
+	   var preserve_group = document.getElementById('preserve-group');
 	   overwrite_group.style.display = '';
 	   preserve_group.style.display = 'none';
 
 	 } else if (inputStyle === 'preserve') {
-	   var overwrite_group = document.getElementById("overwrite-group");
-	   var preserve_group = document.getElementById("preserve-group");
+	   var overwrite_group = document.getElementById('overwrite-group');
+	   var preserve_group = document.getElementById('preserve-group');
 	   overwrite_group.style.display = 'none';
 	   preserve_group.style.display = '';
 	 }
@@ -171,9 +198,9 @@
 	 inputSize = r.value;
        }
        
-       var overwrite = document.getElementById("overwrite");
-       var preserve_input = document.getElementById("preserve-input");
-       var center = document.getElementById("center");
+       var overwrite = document.getElementById('overwrite');
+       var preserve_input = document.getElementById('preserve-input');
+       var center = document.getElementById('center');
 
 
        if (inputSize === 'small') {
@@ -208,7 +235,7 @@
      }
 
      function showUncommon(r) {
-       var divsToHide = document.getElementsByClassName("uncommon");
+       var divsToHide = document.getElementsByClassName('uncommon');
 
        if (r.value === 'hide') {
 	 for (var i = 0; i < divsToHide.length; i++) {
@@ -239,30 +266,54 @@
       <div class="settings">
 	<div class="stv-radio-buttons-wrapper">
 	  <input type="radio" class="stv-radio-button" name="transliteration-button" value="overwrite" id="overwrite-text-button" onclick="setInput(this,'style');" checked />
-	  <label for="overwrite-text-button">Overwrite</label>
+	  <label for="overwrite-text-button">
+	    <span class="en">Overwrite rōmaji</span>
+	    <span class="jp">ローマ字を書き換える</span>
+	  </label>
 	  <input type="radio" class="stv-radio-button" name="transliteration-button" value="preserve" id="preserve-text-button" onclick="setInput(this,'style');" />
-	  <label for="preserve-text-button">Preserve</label>
+	  <label for="preserve-text-button">
+	    <span class="en">Preserve rōmaji</span>
+	    <span class="jp">ローマ字を書き換えない</span>
+	  </label>
 	</div>
 
 	<div class="stv-radio-buttons-wrapper">
-	  <input type="radio" class="stv-radio-button" name="language-button" value="1" id="jp-button" onclick="setLanguage(this);" checked />
-	  <label for="jp-button">Japanese</label>
-	  <input type="radio" class="stv-radio-button" name="language-button" value="2" id="en-button" onclick="setLanguage(this);" />
-	  <label for="en-button">English</label>
+	  <input type="radio" class="stv-radio-button" name="language-button" value="en" id="en-button" onclick="setLanguage(this);" checked />
+	  <label for="en-button">
+	    <span class="en">English</span>
+	    <span class="jp">英語</span>
+	  </label>
+	  <input type="radio" class="stv-radio-button" name="language-button" value="jp" id="jp-button" onclick="setLanguage(this);" />
+	  <label for="jp-button">
+	    <span class="en">Japanese</span>
+	    <span class="jp">日本語</span>
+	  </label>
 	</div>
 
 	<div class="stv-radio-buttons-wrapper">
 	  <input type="radio" class="stv-radio-button" name="text-size-button" value="small" id="small-input-button" onclick="setInput(this,'size');" checked />
-	  <label for="small-input-button">Small</label>
+	  <label for="small-input-button">
+	    <span class="en">Small input</span>
+	    <span class="jp">小さいテキストボックス</span>
+	  </label>
 	  <input type="radio" class="stv-radio-button" name="text-size-button" value="large" id="large-input-button" onclick="setInput(this,'size');" />
-	  <label for="large-input-button">Large</label>
+	  <label for="large-input-button">
+	    <span class="en">Large input</span>
+	    <span class="jp">大きいテキストボックス</span>
+	  </label>
 	</div>
 
 	<div class="stv-radio-buttons-wrapper">
 	  <input type="radio" class="stv-radio-button" name="uncommon" value="hide" id="hide-uncommon" onclick="showUncommon(this);" checked />
-	  <label for="hide-uncommon">Hide Uncommon</label>
+	  <label for="hide-uncommon">
+	    <span class="en">Hide Uncommon</span>
+	    <span class="jp">低頻度語を隠す</span>
+	  </label>
 	  <input type="radio" class="stv-radio-button" name="uncommon" value="show" id="show-uncommon" onclick="showUncommon(this);" />
-	  <label for="show-uncommon">Show Uncommon</label>
+	  <label for="show-uncommon">
+	    <span class="en">Show Uncommon</span>
+	    <span class="jp">低頻度語を表す</span>
+	  </label>
 	</div>
       </div>
 
@@ -737,6 +788,15 @@
      .stv-radio-button:checked + label {
        background-color: rgba(0,0,0,.05);
      }
+
+
+     .en, .jp {
+       display: none;
+     } /* hide all elements with a language class */
+
+     .en:lang(en), .jp:lang(jp) {
+       display: block;
+     } /* show those elements that match their language class */
 
     </style>
   </body>
