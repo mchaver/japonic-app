@@ -226,7 +226,7 @@
     <!-- <p id="result"></p>
 	 <input id="box" type="text" onkeydown="convert(this)" onkeyup="convert(this)"></input>
     -->
-    <div id="center" class="small-nav">
+    <div id="nav" class="small-nav">
       <div id="preserve-group" style="display: none;">
 	<p id="preserve-output"></p>
 	<textarea id="preserve-input" type="text" rows="1" onkeyup="preserve(this)"></textarea>
@@ -650,31 +650,32 @@
        font-size: 0.875em;
      }
 
-     #center {
+     #nav {
        text-align: center;
-       position:fixed;
-       top:0;
+       position: fixed;
+       top: 0;
        background-color: white;
-       width:100vw;
-       z-index:100;
+       width: 100vw;
+       z-index: 100;
        box-shadow: 0 4px 5px -2px grey;
      }
 
+     --nav-height: 5.5em;
      
      .small-nav {
-       height: 5.5em;
+       height: var(--nav-height);
      }
      
      .medium-nav {
-       height: 8em;
+       height: calc(var(--nav-height) + 2.5em);
      }
 
      .large-nav {
-       height: 12.5em;
+       height: calc(var(--nav-height) + 7em);
      }
 
      .xlarge-nav {
-       height: 15em;
+       height: calc(var(--nav-height) + 9.5em);
      }
 
      .fixedElement {
