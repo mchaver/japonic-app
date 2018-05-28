@@ -200,8 +200,6 @@
        
        var overwrite = document.getElementById('overwrite');
        var preserve_input = document.getElementById('preserve-input');
-       var center = document.getElementById('center');
-
 
        if (inputSize === 'small') {
 	 overwrite.rows = '1';
@@ -215,23 +213,10 @@
 	 preserve_input.style.height = '5.6em';
        }
 
-       if (inputStyle === 'overwrite') {
-	 if (inputSize === 'small') {
-	   center.className = '';
-	   center.classList.add('small-nav');
-	 } else {
-	   center.className = '';
-	   center.classList.add('large-nav');
-	 }
-       } else if (inputStyle === 'preserve') {
-	 if (inputSize === 'small') {
-	   center.className = '';
-	   center.classList.add('medium-nav');
-	 } else {
-	   center.className = '';
-	   center.classList.add('xlarge-nav');
-	 }
-       }
+       var nav = document.getElementById('nav');
+       var kanatable = document.getElementById('kanatable');
+       var em = parseFloat(getComputedStyle(nav).fontSize);
+       kanatable.style['margin-top'] = String(nav.clientHeight + (em * 4.9)) + 'px';
      }
 
      function showUncommon(r) {
@@ -319,7 +304,7 @@
 
     </div>
 
-   <table class="kanatable nowraplinks" style="vertical-align:top;padding:2px;margin:10em 0 0 2em;" width="95%" cellpadding="2" border="0">
+    <table id="kanatable" class="kanatable" style="vertical-align:top;padding:2px;margin:10em 0 0 2em;" width="95%" cellpadding="2" border="0">
       <tbody>
 	<caption>
 	  <span class="en">Rōmaji Input</span>
@@ -501,8 +486,20 @@
 
 	<tr valign="top" align="center">
 	  <th></th>
-	  <td colspan="5" bgcolor="#EFFAFA"><big>ん</big><br><code>nn</code>, <code>n'</code>, <code>n</code> と <code>スペースキー</code>, <code>n</code> と <code>いずれかの子音</code></td>
-	  <td colspan="3" bgcolor="#F3F5DE"><big>っ</big><br><code>ltsu</code>, <code>ltu</code>, <code>xtsu</code>, <code>xtu</code>, 子音字を重ねる</td>
+	  <td colspan="5" bgcolor="#EFFAFA">
+	    <big>ん</big>
+	    <br>
+	    <code>nn</code>, <code>n'</code>, 
+	    <span class="en"><code>n</code> and <code>SPACE</code>, <code>n</code> and <code>any consonant</code></span>
+	    <span class="jp"><code>n</code> と <code>スペースキー</code>, <code>n</code> と <code>いずれかの子音</code></span>
+	  </td>
+	  <td colspan="3" bgcolor="#F3F5DE">
+	    <big>っ</big>
+	    <br>
+	    <code>ltsu</code>, <code>ltu</code>, <code>xtsu</code>, <code>xtu</code>, 
+	    <span class="en">repeat any consonant</span>
+	    <span class="jp">子音字を重ねる</span>
+	  </td>
 	</tr>
 
 	<tr>
@@ -727,10 +724,13 @@
     <div class="space"></div>
     <style>
 
+     --nav-height: 5.5em;
+
      .space {
        margin-top: 20em;
        margin-bottom: 20em;
      }
+     
      #overwrite, #preserve-input {
        padding-top: 0.12em;
        font-size: 2em;
@@ -750,12 +750,33 @@
        margin-top: 0.5em;
      }
 
+     --table-marge: 10em;
+
+     .small-nav {
+       margin-top: var(--table-margin);
+     }
+     
+     .medium-nav {
+       margin-top: calc(var(--table-margin) + 2.5em);
+     }
+
+     .large-nav {
+       margin-top: calc(var(--table-margin) + 7em);
+     }
+
+     .xlarge-nav {
+       margin-top: calc(var(--table-margin) + 9.5em);
+     }
+     
      table.kanatable {
        background-color: #f8f9fa;
-       color: #222;
+       color: #333;
        margin: 1em 0;
        border: 1px solid #a2a9b1;
        border-collapse: collapse;
+       vertical-align: top;
+       padding: 2px;
+       margin: 10em 0 0 2em;
      }
 
      @media(max-width: 767px) {
@@ -787,6 +808,35 @@
        word-wrap: break-word;
      }
      
+     #nav {
+       text-align: center;
+       position: fixed;
+       top: 0;
+       background-color: white;
+       width: 100vw;
+       z-index: 100;
+       box-shadow: 0 4px 5px -2px grey;
+       height: var(--nav-height);
+     }
+
+     /*
+	.small-nav {
+	height: var(--nav-height);
+	}
+	
+	.medium-nav {
+	height: calc(var(--nav-height) + 2.5em);
+	}
+
+	.large-nav {
+	height: calc(var(--nav-height) + 7em);
+	}
+
+	.xlarge-nav {
+	height: calc(var(--nav-height) + 9.5em);
+	}
+      */
+     /* render keys that produce a particular kana in code tag */
      code {
        color: #000;
        background-color: #f8f9fa;
@@ -797,33 +847,6 @@
        font-size: 0.875em;
      }
 
-     #nav {
-       text-align: center;
-       position: fixed;
-       top: 0;
-       background-color: white;
-       width: 100vw;
-       z-index: 100;
-       box-shadow: 0 4px 5px -2px grey;
-     }
-
-     --nav-height: 5.5em;
-     
-     .small-nav {
-       height: var(--nav-height);
-     }
-     
-     .medium-nav {
-       height: calc(var(--nav-height) + 2.5em);
-     }
-
-     .large-nav {
-       height: calc(var(--nav-height) + 7em);
-     }
-
-     .xlarge-nav {
-       height: calc(var(--nav-height) + 9.5em);
-     }
 
      .fixedElement {
        background-color: #c0c0c0;
@@ -875,24 +898,30 @@
        color: rgba(0,0,0,.87);
        background-color: #fff;
      }
+
      .stv-radio-button + label:first-of-type {
        border-radius: .28571429rem 0 0 .28571429rem;
      }
+
      .stv-radio-button + label:last-of-type {
        border-radius: 0 .28571429rem .28571429rem 0;
      }
+
      .stv-radio-button:checked + label {
        background-color: rgba(0,0,0,.05);
      }
 
+     /* international support */
 
+     /* hide all elements with a language class */
      .en, .jp {
        display: none;
-     } /* hide all elements with a language class */
+     } 
 
+     /* show those elements that match their language class */
      .en:lang(en), .jp:lang(jp) {
        display: block;
-     } /* show those elements that match their language class */
+     } 
 
     </style>
   </body>
